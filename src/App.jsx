@@ -27,7 +27,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        "https://backend-portal-captive-bbh.onrender.com/connect",
+        "/api/connect", // Usar el proxy configurado
         {
           method: "POST",
           headers: {
@@ -50,6 +50,7 @@ const App = () => {
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
     } catch (error) {
       setMessage(`Error de conexión: ${error.message}`);
+      console.error("Error de conexión:", error);
     }
   };
 
