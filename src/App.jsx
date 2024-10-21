@@ -27,7 +27,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        "buddhabarbeachhotel.ddns.net:3000/connect",
+        "https://buddhabarbeachhotel.ddns.net:3000/connect",
         {
           method: "POST",
           headers: {
