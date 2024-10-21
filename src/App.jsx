@@ -27,7 +27,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        "https://buddhabarbeachhotel.ddns.net:3000/connect",
+        "https://backend-portal-captive-bbh.onrender.com:3000/connect",
         {
           method: "POST",
           headers: {
