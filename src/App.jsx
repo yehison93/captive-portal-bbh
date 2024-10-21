@@ -27,7 +27,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        "https://backend-portal-captive-bbh.onrender.com:3000/connect",
+        "https://backend-portal-captive-bbh.onrender.com/connect",
         {
           method: "POST",
           headers: {
