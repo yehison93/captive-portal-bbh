@@ -26,13 +26,16 @@ const App = () => {
     }
 
     try {
-      const response = await fetch("http://10.0.98.210:3000/connect", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ mac: macAddress }),
-      });
+      const response = await fetch(
+        "buddhabarbeachhotel.ddns.net:3000/connect",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ mac: macAddress }),
+        }
+      );
 
       const data = await response.json();
 
