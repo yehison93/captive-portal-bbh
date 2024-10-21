@@ -47,7 +47,7 @@ const App = () => {
         setMessage(`Error: ${data.error || "Hubo un problema al conectarse"}`);
       }
 
-      console.log("Respuesta del servidor:", data);
+      console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
     } catch (error) {
       setMessage(`Error de conexión: ${error.message}`);
     }
