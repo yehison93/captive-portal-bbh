@@ -4,10 +4,9 @@ const App = () => {
   const [message, setMessage] = useState("");
   const [macAddress, setMacAddress] = useState("");
 
-  // Función para obtener la dirección MAC del cliente desde la URL
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const mac = urlParams.get("id"); // Cambiamos a 'id' para obtener la MAC del cliente
+    const mac = urlParams.get("id");
     if (mac) {
       setMacAddress(mac);
     } else {
@@ -22,13 +21,12 @@ const App = () => {
   const handleConnect = async () => {
     if (!macAddress) {
       setMessage("Dirección MAC no válida.");
-
       return;
     }
 
     try {
       const response = await fetch(
-        "https://backend-portal-captive-bbh.onrender.com/connect",
+        "/api/connect", // Usar el proxy configurado
         {
           method: "POST",
           headers: {
@@ -51,6 +49,7 @@ const App = () => {
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
     } catch (error) {
       setMessage(`Error de conexión: ${error.message}`);
+      console.error("Error de conexión:", error);
     }
   };
 
