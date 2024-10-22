@@ -22,12 +22,13 @@ const App = () => {
   const handleConnect = async () => {
     if (!macAddress) {
       setMessage("Dirección MAC no válida.");
+
       return;
     }
 
     try {
       const response = await fetch(
-        "https://backend-portal-captive-bbh.onrender.com/connect",
+        "http://backend-portal-captive-bbh.onrender.com/connect",
         {
           method: "POST",
           headers: {
