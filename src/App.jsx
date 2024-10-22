@@ -22,7 +22,6 @@ const App = () => {
   const handleConnect = async () => {
     if (!macAddress) {
       setMessage("Dirección MAC no válida.");
-
       return;
     }
 
@@ -44,6 +43,7 @@ const App = () => {
         setMessage(
           `Conexión exitosa: ${data.message || "Conectado exitosamente"}`
         );
+        window.location.href = "https://www.instagram.com/maremareshotel/"; // Redirige a una página de confirmación
       } else {
         setMessage(`Error: ${data.error || "Hubo un problema al conectarse"}`);
       }
