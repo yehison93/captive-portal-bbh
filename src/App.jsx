@@ -43,7 +43,8 @@ const App = () => {
         setMessage(
           `Conexión exitosa: ${data.message || "Conectado exitosamente"}`
         );
-        window.location.href = "https://www.instagram.com/maremareshotel/"; // Redirige a una página de confirmación
+        window.location.href =
+          "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet"; // Redirige a una página de confirmación
       } else {
         setMessage(`Error: ${data.error || "Hubo un problema al conectarse"}`);
       }
