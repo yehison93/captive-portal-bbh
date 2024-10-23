@@ -31,6 +31,7 @@ const App = () => {
 
     try {
       const response = await fetch(
+        //backend alojado en render
         "https://backend-portal-captive-bbh-1.onrender.com/connect",
         {
           method: "POST",
