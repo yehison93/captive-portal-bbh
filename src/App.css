@@ -12,7 +12,7 @@
 .bg-img {
   position: absolute;
   opacity: 40%;
-  animation: rotateImg 60s infinite alternate;
+  animation: rotateImg 240s infinite alternate;
 }
 
 .img-logo {
