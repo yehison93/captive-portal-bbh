@@ -32,7 +32,11 @@ const PortalCautive = ({ macAddress, handleConnect, message }) => {
                     paraíso.
                   </h5>
                 </Card.Text>
-                <Button variant="light" onClick={handleConnect}>
+                <Button
+                  className="btn-submit"
+                  variant="light"
+                  onClick={handleConnect}
+                >
                   Conectar
                 </Button>
               </>

@@ -1,6 +1,7 @@
 import { Carousel, Figure } from "react-bootstrap";
 // import Sponsor from "./Sponsor";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
+import logoBBH from "../assets/sponsors/bbh.png";
 
 const sponsorItem = [
   {
@@ -9,8 +10,8 @@ const sponsorItem = [
     slogan: "Te mantiene conectado",
   },
   {
-    name: "Tecnonet",
-    img: logoTecnonet,
+    name: "BBH",
+    img: logoBBH,
     slogan: "Te mantiene conectado",
   },
   {
@@ -30,10 +31,9 @@ const Sponsors = () => {
             key={index}
             activeIndex={index}
           >
-            <Figure>
+            <Figure className="container-figure">
               <Figure.Image
-                width={171}
-                height={180}
+                className="figure-img"
                 alt={"Imagen de " + item.name}
                 src={item.img}
               />

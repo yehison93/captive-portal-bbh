@@ -15,12 +15,30 @@
   animation: rotateImg 60s infinite alternate;
 }
 
+.btn-submit {
+  font-family: Audiowide, "Courier New", Courier, monospace !important;
+  animation: growShrink 1s ease-in-out infinite alternate;
+}
+
 .container-sponsor {
   width: 100%;
 }
 
 .sponsor-img {
   max-width: 200px;
+}
+
+.container-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.figure-img {
+  max-width: 300px;
+  height: auto;
 }
 
 .container-footer {
@@ -36,7 +54,7 @@
 
 .palmeras {
   font-size: 2rem;
-  animation: mirror 1s ease-in-out infinite alternate;
+  animation: mirror 2s ease-in-out infinite alternate;
   transform: scale(1.5);
 }
 @keyframes mirror {
@@ -59,5 +77,16 @@
 @media screen and (min-width: 500px) {
   .bg-img {
     width: 110%;
+  }
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px white;
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px white;
   }
 }
