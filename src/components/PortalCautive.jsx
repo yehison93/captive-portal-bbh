@@ -12,16 +12,16 @@ const PortalCautive = ({ macAddress, handleConnect, message }) => {
       <Image src={background} className="bg-img" />
       <Row>
         <Card
-          className="bg-transparent text-light text-center border-none gap-1"
-          style={{ width: "25rem" }}
+          className="bg-transparent text-light text-center  border-none gap-1"
+          style={{ width: "20rem" }}
         >
           <Card.Img variant="top" src={logo} />
           <Card.Body>
-            <Card.Title>
-              <Stack direction="horizontal" gap={3}>
-                <span className="palmeras mx-auto">🌴</span>
-                <h1 className="mx-auto">¡Bienvenidos!</h1>
-                <span className="palmeras mx-auto">🌴</span>
+            <Card.Title className="text-center">
+              <Stack direction="horizontal">
+                <span className="palmeras ">🌴</span>
+                <h1>¡Bienvenidos!</h1>
+                <span className="palmeras ">🌴</span>
               </Stack>
             </Card.Title>
             {macAddress ? (

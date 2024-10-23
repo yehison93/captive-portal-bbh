@@ -38,7 +38,7 @@ const Sponsors = () => {
                 alt={"Imagen de " + item.name}
                 src={item.img}
               />
-              <Figure.Caption className="text-light fs-5">
+              <Figure.Caption className="text-light">
                 {item.slogan}
               </Figure.Caption>
             </Figure>
