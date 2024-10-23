@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100%;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -38,16 +39,16 @@
 
 .figure-img {
   max-width: 250px;
-  min-width: 240px;
-  height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .container-footer {
-  position: fixed;
+  position: absolute;
+  width: 100%;
   bottom: 0;
   margin: 0;
   padding: 0;
-  width: 100%;
   text-align: center;
   font-size: 0.8rem;
   background-color: transparent;

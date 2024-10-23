@@ -8,7 +8,7 @@ import Footer from "./Footer";
 /* eslint-disable react/prop-types */
 const PortalCautive = ({ macAddress, handleConnect, message }) => {
   return (
-    <Container fluid className="main-container bg-dark gap-3">
+    <Container fluid className="main-container bg-dark gap-1">
       <Image src={background} className="bg-img" />
       <Row>
         <Card
