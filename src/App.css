@@ -11,9 +11,9 @@
 
 .bg-img {
   position: absolute;
-  opacity: 40%;
+  opacity: 30%;
   width: 250%;
-  animation: rotateImg 120s infinite alternate;
+  animation: rotateImg 60s infinite alternate;
 }
 
 @keyframes rotateImg {

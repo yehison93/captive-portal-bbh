@@ -13,7 +13,9 @@ const App = () => {
     if (mac) {
       setMacAddress(mac);
     } else {
-      setMessage("Dirección MAC no encontrada en la URL.");
+      setMessage(
+        "Disculpa, pero hubo un error. Desconecta el dispositivo de la red WIFI y vuelve a conectar para continuar. Si el problema persiste solicita ayuda."
+      );
     }
   };
 
