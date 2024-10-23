@@ -12,32 +12,29 @@ const PortalCautive = ({ macAddress, handleConnect, message }) => {
       <Image src={background} className="bg-img" />
       <Row>
         <Card
-          className="bg-transparent text-light text-center  border-none gap-1"
-          style={{ width: "20rem" }}
+          className="container-card bg-transparent text-light text-center  gap-1"
+          style={{ width: "30rem" }}
         >
-          <Card.Img variant="top" src={logo} />
+          <Card.Img variant="top" src={logo} className="img-logo" />
           <Card.Body>
-            <Card.Title className="text-center">
-              <Stack direction="horizontal">
-                <span className="palmeras ">🌴</span>
+            <Card.Title>
+              <Stack direction="horizontal" className="text-center">
+                <span className="palmeras m-auto">🌴</span>
                 <h1>¡Bienvenidos!</h1>
-                <span className="palmeras ">🌴</span>
+                <span className="palmeras  m-auto ">🌴</span>
               </Stack>
             </Card.Title>
             {macAddress ? (
               <>
                 <Card.Text>
-                  <h5>
-                    Disfrute de nuestro WiFi mientras se relajan en nuestro
-                    paraíso.
-                  </h5>
+                  <h5>Disfrute de nuestro WiFi</h5>
                 </Card.Text>
                 <Button
                   className="btn-submit"
                   variant="light"
                   onClick={handleConnect}
                 >
-                  Conectar
+                  CONECTAR
                 </Button>
               </>
             ) : (

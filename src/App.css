@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100vh;
   width: 100%;
   position: relative;
@@ -15,8 +15,18 @@
   animation: rotateImg 60s infinite alternate;
 }
 
+.img-logo {
+  margin: auto;
+  width: 20rem;
+}
+
+.container-card {
+  border: none;
+}
+
 .btn-submit {
   font-family: Audiowide, "Courier New", Courier, monospace !important;
+  color: tra;
   animation: growShrink 1s ease-in-out infinite alternate;
 }
 
@@ -75,19 +85,19 @@
   }
 }
 
-@media screen and (min-width: 500px) {
-  .bg-img {
-    width: 110%;
-  }
-}
-
 @keyframes growShrink {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 5px white;
+    box-shadow: 0 0 2px white;
   }
   100% {
     transform: scale(1.1);
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 20px white;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .bg-img {
+    width: 110%;
   }
 }
