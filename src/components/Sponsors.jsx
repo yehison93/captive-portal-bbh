@@ -2,6 +2,7 @@ import { Carousel, Figure } from "react-bootstrap";
 // import Sponsor from "./Sponsor";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
+import logoBrisas from "../assets/sponsors/brisas.png";
 
 const sponsorItem = [
   {
@@ -12,12 +13,12 @@ const sponsorItem = [
   {
     name: "BBH",
     img: logoBBH,
-    slogan: "Te mantiene conectado",
+    slogan: "¡Gana a lo grande con bbh!",
   },
   {
-    name: "Tecnonet",
-    img: logoTecnonet,
-    slogan: "Te mantiene conectado",
+    name: "Brisas",
+    img: logoBrisas,
+    slogan: "Tradición que puedes saborear",
   },
 ];
 
@@ -37,7 +38,7 @@ const Sponsors = () => {
                 alt={"Imagen de " + item.name}
                 src={item.img}
               />
-              <Figure.Caption className="text-light">
+              <Figure.Caption className="text-light fs-3">
                 {item.slogan}
               </Figure.Caption>
             </Figure>

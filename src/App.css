@@ -37,7 +37,8 @@
 }
 
 .figure-img {
-  max-width: 300px;
+  max-width: 250px;
+  min-width: 240px;
   height: auto;
 }
 
