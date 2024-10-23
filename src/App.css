@@ -11,22 +11,53 @@
 
 .bg-img {
   position: absolute;
-  opacity: 30%;
-  width: 250%;
+  opacity: 40%;
   animation: rotateImg 60s infinite alternate;
 }
 
-@keyframes rotateImg {
+.container-sponsor {
+  width: 100%;
+}
+
+.sponsor-img {
+  max-width: 200px;
+}
+
+.container-footer {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: transparent;
+}
+
+.palmeras {
+  font-size: 2rem;
+  animation: mirror 1s ease-in-out infinite alternate;
+  transform: scale(1.5);
+}
+@keyframes mirror {
   0% {
-    transform: rotate(0) scale(0.8);
+    transform: rotate(20deg) scaleX(-1);
   }
   100% {
-    transform: rotate(360deg) scale(1.5);
+    transform: rotate(-20deg) scaleX(1);
+  }
+}
+@keyframes rotateImg {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(3);
   }
 }
 
 @media screen and (min-width: 500px) {
   .bg-img {
-    width: 150%;
+    width: 110%;
   }
 }
