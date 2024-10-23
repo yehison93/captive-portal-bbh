@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import PortalCautive from "./components/PortalCautive";
+import "./App.css";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -56,17 +58,11 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Conectar Dispositivo</h1>
-      {macAddress ? (
-        <div>
-          <p>Dirección MAC del cliente: {macAddress}</p>
-          <button onClick={handleConnect}>Conectar</button>
-        </div>
-      ) : (
-        <p>{message}</p>
-      )}
-    </div>
+    <PortalCautive
+      macAddress={macAddress}
+      handleConnect={handleConnect}
+      message={message}
+    />
   );
 };
 
