@@ -31,7 +31,7 @@ const App = () => {
     }
     setMessage("Iniciando conexión, por favor espere...");
     setConnected(false);
-    setLoading(true); // Inicia el spinner
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -50,9 +50,8 @@ const App = () => {
       if (response.ok) {
         setMessage(`Conexión exitosa`);
         setConnected(true);
-        setLoading(false); // Detiene el spinner
-        window.location.href =
-          "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet";
+        setLoading(false);
+        window.location.href = "http://www.instagram.com/maremareshotel/?hl=es";
       } else {
         setMessage(`Hubo un problema al conectarse`);
       }
