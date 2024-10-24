@@ -44,13 +44,15 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
                     </Spinner>
                   </>
                 ) : (
-                  <Button
-                    className="btn-submit"
-                    variant="light"
-                    onClick={handleConnect}
-                  >
-                    CONECTAR
-                  </Button>
+                  loading || (
+                    <Button
+                      className="btn-submit"
+                      variant="light"
+                      onClick={handleConnect}
+                    >
+                      CONECTAR
+                    </Button>
+                  )
                 )}
               </>
             ) : (

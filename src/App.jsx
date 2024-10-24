@@ -56,6 +56,7 @@ const App = () => {
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
+      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setMessage(`Error de conexión, intente de nuevo.`);
     }
