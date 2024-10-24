@@ -37,7 +37,7 @@ const PortalCautive = ({
                   <h5>{message}</h5>
                 </Card.Text>
                 {loading ? (
-                  <Image className="spinner" width={100} src={spinner} />
+                  <Image className="spinner" src={spinner} />
                 ) : (
                   connected || (
                     <Button

@@ -65,6 +65,9 @@
 }
 
 .spinner {
+  width: 5rem;
+  margin: 0;
+  padding: 0;
   animation: spinnerRotation 5s ease-in-out infinite;
 }
 
