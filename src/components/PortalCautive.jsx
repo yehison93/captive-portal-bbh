@@ -14,7 +14,13 @@ import background from "../assets/background.jpg";
 import Footer from "./Footer";
 
 /* eslint-disable react/prop-types */
-const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
+const PortalCautive = ({
+  macAddress,
+  handleConnect,
+  message,
+  loading,
+  connected,
+}) => {
   return (
     <Container fluid className="main-container bg-dark gap-1">
       <Image src={background} className="bg-img" />
@@ -44,7 +50,7 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
                     </Spinner>
                   </>
                 ) : (
-                  loading || (
+                  connected || (
                     <Button
                       className="btn-submit"
                       variant="light"

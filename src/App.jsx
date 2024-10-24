@@ -5,7 +5,8 @@ import "./App.css";
 const App = () => {
   const [message, setMessage] = useState("Disfrute nuestro WIFI");
   const [macAddress, setMacAddress] = useState("");
-  const [loading, setLoading] = useState(false); // Estado de carga
+  const [loading, setLoading] = useState(false);
+  const [connected, setConnected] = useState(false);
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -29,7 +30,7 @@ const App = () => {
       return;
     }
     setMessage("Iniciando conexión, por favor espere...");
-
+    setConnected(false);
     setLoading(true); // Inicia el spinner
 
     try {
@@ -48,6 +49,7 @@ const App = () => {
 
       if (response.ok) {
         setMessage(`Conexión exitosa`);
+        setConnected(true);
         setLoading(false); // Detiene el spinner
         window.location.href =
           "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet";
@@ -68,6 +70,7 @@ const App = () => {
       handleConnect={handleConnect}
       message={message}
       loading={loading}
+      connected={connected}
     />
   );
 };
