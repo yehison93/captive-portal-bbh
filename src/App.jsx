@@ -5,11 +5,11 @@ import "./App.css";
 const App = () => {
   const [message, setMessage] = useState("");
   const [macAddress, setMacAddress] = useState("");
+  const [loading, setLoading] = useState(false); // Estado de carga
 
-  // Función para obtener la dirección MAC del cliente desde la URL
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const mac = urlParams.get("id"); // Cambiamos a 'id' para obtener la MAC del cliente
+    const mac = urlParams.get("id");
     if (mac) {
       setMacAddress(mac);
     } else {
@@ -29,9 +29,10 @@ const App = () => {
       return;
     }
 
+    setLoading(true); // Inicia el spinner
+
     try {
       const response = await fetch(
-        //backend alojado en render
         "https://backend-portal-captive-bbh.onrender.com/connect",
         {
           method: "POST",
@@ -49,7 +50,7 @@ const App = () => {
           `Conexión exitosa: ${data.message || "Conectado exitosamente"}`
         );
         window.location.href =
-          "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet"; // Redirige a una página de confirmación
+          "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet";
       } else {
         setMessage(`Error: ${data.error || "Hubo un problema al conectarse"}`);
       }
@@ -57,6 +58,8 @@ const App = () => {
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
     } catch (error) {
       setMessage(`Error de conexión: ${error.message}`);
+    } finally {
+      setLoading(false); // Detiene el spinner
     }
   };
 
@@ -65,6 +68,7 @@ const App = () => {
       macAddress={macAddress}
       handleConnect={handleConnect}
       message={message}
+      loading={loading}
     />
   );
 };

@@ -1,12 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Sponsors from "./Sponsors";
-import { Card, Container, Row, Button, Image, Stack } from "react-bootstrap";
+import {
+  Card,
+  Container,
+  Row,
+  Button,
+  Image,
+  Stack,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
 import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
 import Footer from "./Footer";
 
 /* eslint-disable react/prop-types */
-const PortalCautive = ({ macAddress, handleConnect, message }) => {
+const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
   return (
     <Container fluid className="main-container bg-dark gap-1">
       <Image src={background} className="bg-img" />
@@ -29,13 +38,21 @@ const PortalCautive = ({ macAddress, handleConnect, message }) => {
                 <Card.Text>
                   <h5>Disfrute de nuestro WiFi</h5>
                 </Card.Text>
-                <Button
-                  className="btn-submit"
-                  variant="light"
-                  onClick={handleConnect}
-                >
-                  CONECTAR
-                </Button>
+                {loading ? (
+                  <>
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  </>
+                ) : (
+                  <Button
+                    className="btn-submit"
+                    variant="light"
+                    onClick={handleConnect}
+                  >
+                    CONECTAR
+                  </Button>
+                )}
               </>
             ) : (
               <Card.Footer>{message}</Card.Footer>
