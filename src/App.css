@@ -7,6 +7,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
 .bg-img {
@@ -63,6 +64,11 @@
   background-color: transparent;
 }
 
+.spinner {
+  position: absolute;
+  animation: spinnerRotation 5s ease-in-out infinite alternate;
+}
+
 .palmeras {
   font-size: 2rem;
   animation: mirror 5s ease-in-out infinite alternate;
@@ -93,6 +99,17 @@
   100% {
     transform: scale(1.1);
     box-shadow: 0 0 20px white;
+  }
+}
+
+@keyframes spinnerRotation {
+  0% {
+    transform: rotate(0deg);
+    left: 10%;
+  }
+  100% {
+    transform: rotate(3600deg);
+    left: 70%;
   }
 }
 

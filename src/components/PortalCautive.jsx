@@ -1,17 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Sponsors from "./Sponsors";
-import {
-  Card,
-  Container,
-  Row,
-  Button,
-  Image,
-  Stack,
-  Spinner,
-} from "react-bootstrap";
+import { Card, Container, Row, Button, Image, Stack } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
 import Footer from "./Footer";
+import spinner from "../assets/logoSpinner.png";
 
 /* eslint-disable react/prop-types */
 const PortalCautive = ({
@@ -44,20 +37,7 @@ const PortalCautive = ({
                   <h5>{message}</h5>
                 </Card.Text>
                 {loading ? (
-                  <Stack
-                    direction="horizontal"
-                    className="justify-content-center gap-1"
-                  >
-                    <Spinner animation="grow" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                    <Spinner animation="grow" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                    <Spinner animation="grow" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                  </Stack>
+                  <Image className="spinner" width={100} src={spinner} />
                 ) : (
                   connected || (
                     <Button
