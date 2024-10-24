@@ -32,10 +32,10 @@ const PortalCautive = ({
           <Card.Img variant="top" src={logo} className="img-logo" />
           <Card.Body>
             <Card.Title>
-              <Stack direction="horizontal" className="text-center">
-                <span className="palmeras m-auto">🌴</span>
-                <h1>¡Bienvenidos!</h1>
-                <span className="palmeras  m-auto ">🌴</span>
+              <Stack direction="horizontal" className="justify-content-center">
+                <span className="palmeras ">🌴</span>
+                <h1 className="">¡Bienvenido!</h1>
+                <span className="palmeras  ">🌴</span>
               </Stack>
             </Card.Title>
             {macAddress ? (
@@ -45,7 +45,7 @@ const PortalCautive = ({
                 </Card.Text>
                 {loading ? (
                   <>
-                    <Spinner animation="border" role="status">
+                    <Spinner animation="grow" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </Spinner>
                   </>
