@@ -3,7 +3,7 @@ import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
 const App = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Disfrute nuestro WIFI");
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false); // Estado de carga
 
@@ -28,6 +28,7 @@ const App = () => {
       setMessage("Dirección MAC no válida.");
       return;
     }
+    setMessage("Iniciando conexión, por favor espere un poco");
 
     setLoading(true); // Inicia el spinner
 
@@ -46,20 +47,17 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(
-          `Conexión exitosa: ${data.message || "Conectado exitosamente"}`
-        );
+        setMessage(`Conexión exitosa`);
+        setLoading(false); // Detiene el spinner
         window.location.href =
           "https://www.instagram.com/maremareshotel/?utm_source=ig_web_button_share_sheet";
       } else {
-        setMessage(`Error: ${data.error || "Hubo un problema al conectarse"}`);
+        setMessage(`Hubo un problema al conectarse`);
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
     } catch (error) {
-      setMessage(`Error de conexión: ${error.message}`);
-    } finally {
-      setLoading(false); // Detiene el spinner
+      setMessage(`Error de conexión, intente de nuevo.`);
     }
   };
 

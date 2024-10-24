@@ -8,7 +8,6 @@ import {
   Image,
   Stack,
   Spinner,
-  Alert,
 } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
@@ -36,7 +35,7 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
             {macAddress ? (
               <>
                 <Card.Text>
-                  <h5>Disfrute de nuestro WiFi</h5>
+                  <h5>{message}</h5>
                 </Card.Text>
                 {loading ? (
                   <>
@@ -55,7 +54,7 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading }) => {
                 )}
               </>
             ) : (
-              <Card.Footer>{message}</Card.Footer>
+              macAddress && <Card.Text>{message}</Card.Text>
             )}
           </Card.Body>
         </Card>
