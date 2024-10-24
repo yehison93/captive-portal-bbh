@@ -28,7 +28,7 @@ const App = () => {
       setMessage("Dirección MAC no válida.");
       return;
     }
-    setMessage("Iniciando conexión, por favor espere un poco");
+    setMessage("Iniciando conexión, por favor espere...");
 
     setLoading(true); // Inicia el spinner
 
