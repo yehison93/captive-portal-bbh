@@ -44,11 +44,20 @@ const PortalCautive = ({
                   <h5>{message}</h5>
                 </Card.Text>
                 {loading ? (
-                  <>
+                  <Stack
+                    direction="horizontal"
+                    className="justify-content-center gap-1"
+                  >
                     <Spinner animation="grow" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </Spinner>
-                  </>
+                    <Spinner animation="grow" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    <Spinner animation="grow" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  </Stack>
                 ) : (
                   connected || (
                     <Button
@@ -62,7 +71,7 @@ const PortalCautive = ({
                 )}
               </>
             ) : (
-              macAddress && <Card.Text>{message}</Card.Text>
+              macAddress || <Card.Text>{message}</Card.Text>
             )}
           </Card.Body>
         </Card>
