@@ -3,7 +3,7 @@ import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
 const App = () => {
-  const [message, setMessage] = useState("Disfrute nuestro WIFI");
+  const [message, setMessage] = useState("Disfrute nuestro WI-FI");
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
