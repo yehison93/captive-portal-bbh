@@ -53,7 +53,9 @@ const App = () => {
         setLoading(false);
         window.location.href = "http://www.instagram.com/maremareshotel/?hl=es";
       } else {
-        setMessage(`Hubo un problema al conectarse`);
+        setMessage(
+          `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
+        );
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
