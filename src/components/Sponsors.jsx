@@ -28,6 +28,7 @@ const Sponsors = () => {
       {sponsorItem.map((item, index) => {
         return (
           <Carousel.Item
+            interval={2000}
             className="text-center"
             key={index}
             activeIndex={index}
