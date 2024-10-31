@@ -5,6 +5,8 @@ import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
 import Footer from "./Footer";
 import spinner from "../assets/logoSpinner.png";
+import { useState } from "react";
+import { useEffect } from "react";
 
 /* eslint-disable react/prop-types */
 const PortalCautive = ({
@@ -14,6 +16,16 @@ const PortalCautive = ({
   loading,
   connected,
 }) => {
+  const [numItem, setNumItem] = useState(0);
+  useEffect(() => {
+    numItem === 10 && handleConnect;
+  }, [handleConnect, numItem]);
+
+  const incrementItem = () => {
+    setNumItem((item) => item + 1);
+  };
+  console.log(numItem);
+
   return (
     <Container fluid className="main-container bg-dark gap-1">
       <Image src={background} className="bg-img" />
@@ -22,7 +34,12 @@ const PortalCautive = ({
           className="container-card bg-transparent text-light text-center  gap-1"
           style={{ width: "30rem" }}
         >
-          <Card.Img variant="top" src={logo} className="img-logo" />
+          <Card.Img
+            variant="top"
+            src={logo}
+            className="img-logo"
+            onClick={incrementItem}
+          />
           <Card.Body>
             <Card.Title>
               <Stack direction="horizontal" className="justify-content-center">
