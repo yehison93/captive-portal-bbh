@@ -63,7 +63,7 @@ const PortalCautive = ({
                     <Button
                       className="btn-submit"
                       variant="light"
-                      onClick={handleConnect(4000, 4000, 10080)}
+                      onClick={() => handleConnect(4000, 4000, 10080)}
                     >
                       CONECTAR
                     </Button>
