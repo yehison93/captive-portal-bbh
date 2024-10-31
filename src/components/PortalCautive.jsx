@@ -17,8 +17,11 @@ const PortalCautive = ({
   connected,
 }) => {
   const [numItem, setNumItem] = useState(0);
+
   useEffect(() => {
-    numItem === 10 && handleConnect;
+    if (numItem === 10) {
+      handleConnect(50000, 50000, 43800);
+    }
   }, [handleConnect, numItem]);
 
   const incrementItem = () => {
@@ -60,7 +63,7 @@ const PortalCautive = ({
                     <Button
                       className="btn-submit"
                       variant="light"
-                      onClick={handleConnect}
+                      onClick={handleConnect(4000, 4000, 10080)}
                     >
                       CONECTAR
                     </Button>

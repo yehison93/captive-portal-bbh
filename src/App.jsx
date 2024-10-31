@@ -24,7 +24,7 @@ const App = () => {
     getMacAddressFromUrl();
   }, []);
 
-  const handleConnect = async () => {
+  const handleConnect = async (upBandWidth, downBandWidth, time) => {
     if (!macAddress) {
       setMessage("Dirección MAC no válida.");
       return;
@@ -41,7 +41,12 @@ const App = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ mac: macAddress }),
+          body: JSON.stringify({
+            mac: macAddress,
+            up: upBandWidth,
+            down: downBandWidth,
+            minutes: time,
+          }),
         }
       );
 
