@@ -39,6 +39,10 @@
 .figure-img {
   width: 10rem;
 }
+.text-slogan {
+  font-weight: bold;
+  text-shadow: 0 0 20px white;
+}
 
 .container-figure {
   display: flex;

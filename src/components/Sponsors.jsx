@@ -10,12 +10,12 @@ const sponsorItem = [
   {
     name: "Cardenales",
     img: logoInvitado01,
-    slogan: "¡Somos Uno!",
+    slogan: "¡Bienvenidos!",
   },
   {
     name: "Cardenales",
     img: logoInvitado02,
-    slogan: "",
+    slogan: "¡Bienvenidos!",
   },
   {
     name: "Tecnonet",
@@ -51,7 +51,7 @@ const Sponsors = () => {
                 alt={"Imagen de " + item.name}
                 src={item.img}
               />
-              <Figure.Caption className="text-light">
+              <Figure.Caption className="text-light text-slogan">
                 {item.slogan}
               </Figure.Caption>
             </Figure>
