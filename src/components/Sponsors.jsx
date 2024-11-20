@@ -10,7 +10,7 @@ const sponsorItem = [
   {
     name: "Cardenales",
     img: logoInvitado01,
-    slogan: "Somos Uno",
+    slogan: "¡Somos Uno!",
   },
   {
     name: "Cardenales",
