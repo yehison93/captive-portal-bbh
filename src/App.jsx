@@ -64,7 +64,7 @@ const App = () => {
 
         setTimeout(() => {
           window.location.href = webUrl;
-        }, 500);
+        }, 1000);
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
