@@ -3,8 +3,20 @@ import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
+import logoInvitado01 from "../assets/sponsors/cardenales.webp";
+import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
 
 const sponsorItem = [
+  {
+    name: "Cardenales",
+    img: logoInvitado01,
+    slogan: "Somos Uno",
+  },
+  {
+    name: "Cardenales",
+    img: logoInvitado02,
+    slogan: "",
+  },
   {
     name: "Tecnonet",
     img: logoTecnonet,
@@ -28,7 +40,7 @@ const Sponsors = () => {
       {sponsorItem.map((item, index) => {
         return (
           <Carousel.Item
-            interval={2000}
+            interval={1000}
             className="text-center"
             key={index}
             activeIndex={index}
