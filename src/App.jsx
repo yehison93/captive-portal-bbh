@@ -56,23 +56,7 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-
-        // Intenta abrir la aplicación de Instagram
-        const instagramUrl = "instagram://user?username=maremareshotel";
-        const webUrl = "http://www.instagram.com/maremareshotel/?hl=es";
-
-        // Crea un elemento <a> oculto para simular un clic
-        const link = document.createElement("a");
-        link.href = instagramUrl;
-        document.body.appendChild(link);
-
-        // Simula un clic en el enlace
-        link.click();
-
-        // Espera un momento y redirige a la web si la app no se abre
-        setTimeout(() => {
-          window.location.href = webUrl;
-        }, 500);
+        window.location.href = "http://www.instagram.com/maremareshotel/?hl=es";
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
