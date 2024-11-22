@@ -5,8 +5,14 @@ import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
 import logoInvitado01 from "../assets/sponsors/cardenales.webp";
 import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
+import logoInvitado03 from "../assets/sponsors/vzlagastro.png";
 
 const sponsorItem = [
+  {
+    name: "Lecheria Gastronómica",
+    img: logoInvitado03,
+    slogan: "¡Bienvenidos!",
+  },
   {
     name: "Cardenales",
     img: logoInvitado01,
