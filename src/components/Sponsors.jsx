@@ -5,7 +5,7 @@ import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
 // import logoInvitado01 from "../assets/sponsors/LogoLeones.png";
 // import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
-import logoInvitado03 from "../assets/sponsors/vzlagastro.png";
+// import logoInvitado03 from "../assets/sponsors/vzlagastro.png";
 
 const sponsorItem = [
   // {
@@ -18,11 +18,11 @@ const sponsorItem = [
   //   img: logoInvitado02,
   //   slogan: "¡Bienvenidos!",
   // },
-  {
-    name: "Lecheria Gastronómica",
-    img: logoInvitado03,
-    slogan: "¡Bienvenidos!",
-  },
+  // {
+  //   name: "Lecheria Gastronómica",
+  //   img: logoInvitado03,
+  //   slogan: "¡Bienvenidos!",
+  // },
   {
     name: "Tecnonet",
     img: logoTecnonet,
@@ -48,7 +48,7 @@ const Sponsors = () => {
           <Carousel.Item
             interval={1000}
             className="text-center"
-            key={index}
+            key={index + item.name}
             activeIndex={index}
           >
             <Figure className="container-figure">
