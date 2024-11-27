@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
+const UnifiData = {
+  url: "https://buddhabarbeachhotel.ddns.net:8443",
+  siteID: "d41gke5t",
+  pwSuffixed: "BBH#",
+};
+
 const App = () => {
   const [message, setMessage] = useState("Disfrute nuestro WI-FI");
   const [macAddress, setMacAddress] = useState("");
@@ -46,6 +52,9 @@ const App = () => {
             up: upBandWidth,
             down: downBandWidth,
             minutes: time,
+            url: UnifiData.url,
+            siteID: UnifiData.siteID,
+            pwSuffixed: UnifiData.pwSuffixed,
           }),
         }
       );
@@ -57,7 +66,7 @@ const App = () => {
         setConnected(true);
         setLoading(false);
         // const instagramUrl = "instagram://user?username=maremareshotel";
-        const webUrl = "http://www.instagram.com/maremareshotel/?hl=es";
+        const webUrl = "https://bit.ly/4fLILNE"; //acortado a IG Maremares
 
         window.location.href = webUrl;
       } else {
