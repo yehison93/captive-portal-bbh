@@ -57,9 +57,7 @@ const App = () => {
         setConnected(true);
         setLoading(false);
         // const instagramUrl = "instagram://user?username=maremareshotel";
-        const webUrl = "http://www.instagram.com/maremareshotel/?hl=es";
-
-        window.location.href = webUrl;
+        window.location.href = "/proxy";
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
