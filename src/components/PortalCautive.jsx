@@ -20,14 +20,13 @@ const PortalCautive = ({
 
   useEffect(() => {
     if (numItem === 10) {
-      handleConnect(50000, 50000, 43800);
+      handleConnect(20000, 20000, 43800);
     }
   }, [handleConnect, numItem]);
 
   const incrementItem = () => {
     setNumItem((item) => item + 1);
   };
-  console.log(numItem);
 
   return (
     <Container fluid className="main-container bg-dark gap-1">
