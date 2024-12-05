@@ -3,14 +3,19 @@ import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
-import logoInvitado01 from "../assets/sponsors/logoInvitado01.svg";
+import logoInvitado01 from "../assets/sponsors/logoInvitado04.png";
 import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
-// import logoInvitado03 from "../assets/sponsors/vzlagastro.png";
+import logoInvitado03 from "../assets/sponsors/logoInvitado03.png";
 
 const sponsorItem = [
   {
-    name: "Tigres",
+    name: "Los Gloriosos Navegantes del Magallanes",
     img: logoInvitado01,
+    slogan: "¡Bienvenidos!",
+  },
+  {
+    name: "Bolipuertos",
+    img: logoInvitado03,
     slogan: "¡Bienvenidos!",
   },
   {
@@ -18,6 +23,7 @@ const sponsorItem = [
     img: logoInvitado02,
     slogan: "¡Bienvenidos!",
   },
+
   {
     name: "Tecnonet",
     img: logoTecnonet,
