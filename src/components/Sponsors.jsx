@@ -3,7 +3,7 @@ import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
-import logoInvitado01 from "../assets/sponsors/LogoInvitado01.png";
+import logoInvitado01 from "../assets/sponsors/logoInvitado01.svg";
 import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
 // import logoInvitado03 from "../assets/sponsors/vzlagastro.png";
 
