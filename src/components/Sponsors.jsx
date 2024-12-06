@@ -6,11 +6,17 @@ import logoBrisas from "../assets/sponsors/brisas.png";
 import logoInvitado01 from "../assets/sponsors/logoInvitado04.png";
 import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
 import logoInvitado03 from "../assets/sponsors/logoInvitado03.png";
+import logoInvitado04 from "../assets/sponsors/logoInvitado01.svg";
 
 const sponsorItem = [
   {
     name: "Los Gloriosos Navegantes del Magallanes",
     img: logoInvitado01,
+    slogan: "¡Bienvenidos!",
+  },
+  {
+    name: "La Guaira",
+    img: logoInvitado04,
     slogan: "¡Bienvenidos!",
   },
   {
