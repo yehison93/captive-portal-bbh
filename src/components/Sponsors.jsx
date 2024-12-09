@@ -3,21 +3,21 @@ import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
-import logoInvitado01 from "../assets/sponsors/Logo-Leones-1942.png";
-import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
+// import logoInvitado01 from "../assets/sponsors/Logo-Leones-1942.png";
+// import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
 // import logoInvitado04 from "../assets/sponsors/logoInvitado01.svg";
 
 const sponsorItem = [
-  {
-    name: "Lenoes",
-    img: logoInvitado01,
-    slogan: "¡Bienvenidos!",
-  },
-  {
-    name: "Juegos Juveniles",
-    img: logoInvitado02,
-    slogan: "¡Bienvenidos!",
-  },
+  // {
+  //   name: "Lenoes",
+  //   img: logoInvitado01,
+  //   slogan: "¡Bienvenidos!",
+  // },
+  // {
+  //   name: "Juegos Juveniles",
+  //   img: logoInvitado02,
+  //   slogan: "¡Bienvenidos!",
+  // },
   {
     name: "Tecnonet",
     img: logoTecnonet,
