@@ -65,8 +65,7 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        // const instagramUrl = "instagram://user?username=maremareshotel";
-        const webUrl = "https://bit.ly/4fLILNE"; //acortado a IG Maremares
+        const webUrl = "https://www.instagram.com/maremareshotel/";
 
         window.location.href = webUrl;
       } else {
