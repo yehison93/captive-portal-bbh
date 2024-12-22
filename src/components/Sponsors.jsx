@@ -4,14 +4,14 @@ import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
 // import logoInvitado01 from "../assets/sponsors/logoInvitado04.png";
 // import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
-import logoInvitado01 from "../assets/sponsors/logoinvitado01.png";
+// import logoInvitado01 from "../assets/sponsors/logoinvitado01.png";
 
 const sponsorItem = [
-  {
-    name: "Bravos",
-    img: logoInvitado01,
-    slogan: "¡Bienvenidos!",
-  },
+  // {
+  //   name: "Bravos",
+  //   img: logoInvitado01,
+  //   slogan: "¡Bienvenidos!",
+  // },
   {
     name: "Tecnonet",
     img: logoTecnonet,
