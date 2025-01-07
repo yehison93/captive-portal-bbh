@@ -66,9 +66,19 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        // const webUrl = "https://www.instagram.com/maremareshotel/";
+        const userAgent = navigator.userAgent || window.opera;
 
-        window.location.replace("https://www.instagram.com/maremareshotel/");
+        if (/android/i.test(userAgent)) {
+          // Redirigir a la app de Instagram en Android
+          window.location.href =
+            "intent://instagram.com/_u/maremareshotel/#Intent;package=com.instagram.android;scheme=https;end";
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          // Redirigir a la app de Instagram en iOS
+          window.location.href = "instagram://user?username=maremareshotel";
+        } else {
+          // Redirigir a la página web de Instagram como fallback
+          window.location.href = "https://www.instagram.com/maremareshotel/";
+        }
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
