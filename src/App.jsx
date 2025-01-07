@@ -3,7 +3,8 @@ import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
 const UnifiData = {
-  url: "https://buddhabarbeachhotel.ddns.net:8443",
+  // url: "https://buddhabarbeachhotel.ddns.net:8443",
+  url: "https://unifi.ui.com/network-servers/04b8413b-c066-439a-b89a-edb14818ea51",
   siteID: "d41gke5t",
   pwSuffixed: "BBH#",
 };
