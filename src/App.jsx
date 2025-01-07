@@ -69,14 +69,11 @@ const App = () => {
         const userAgent = navigator.userAgent || window.opera;
 
         if (/android/i.test(userAgent)) {
-          // Redirigir a la app de Instagram en Android
           window.location.href =
             "intent://instagram.com/_u/maremareshotel/#Intent;package=com.instagram.android;scheme=https;end";
         } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          // Redirigir a la app de Instagram en iOS
-          window.location.href = "https://www.google.com/";
+          window.close();
         } else {
-          // Redirigir a la página web de Instagram como fallback
           window.location.href = "https://www.instagram.com/maremareshotel/";
         }
       } else {
