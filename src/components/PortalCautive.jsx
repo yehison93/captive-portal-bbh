@@ -57,16 +57,22 @@ const PortalCautive = ({
                 </Card.Text>
                 {loading ? (
                   <Image className="spinner" src={spinner} />
+                ) : connected ? (
+                  <Button
+                    className="btn-submit"
+                    variant="light"
+                    href="https://www.instagram.com/maremareshotel/"
+                  >
+                    NAVEGAR
+                  </Button>
                 ) : (
-                  connected || (
-                    <Button
-                      className="btn-submit"
-                      variant="light"
-                      onClick={() => handleConnect(4000, 4000, 10080)}
-                    >
-                      CONECTAR
-                    </Button>
-                  )
+                  <Button
+                    className="btn-submit"
+                    variant="light"
+                    onClick={() => handleConnect(4000, 4000, 10080)}
+                  >
+                    CONECTAR
+                  </Button>
                 )}
               </>
             ) : (
