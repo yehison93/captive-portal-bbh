@@ -68,7 +68,7 @@ const App = () => {
         setLoading(false);
         // const webUrl = "https://www.instagram.com/maremareshotel/";
 
-        window.location.replace = "https://www.instagram.com/maremareshotel/";
+        window.location.replace("https://www.instagram.com/maremareshotel/");
         // window.location.reload();
       } else {
         setMessage(
