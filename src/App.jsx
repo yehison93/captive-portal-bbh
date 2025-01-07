@@ -66,9 +66,9 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        const webUrl = "https://www.instagram.com/maremareshotel/";
+        // const webUrl = "https://www.instagram.com/maremareshotel/";
 
-        window.location.href = webUrl;
+        // window.location.href = webUrl;
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
