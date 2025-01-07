@@ -68,7 +68,8 @@ const App = () => {
         setLoading(false);
         // const webUrl = "https://www.instagram.com/maremareshotel/";
 
-        window.location.href = "https://www.instagram.com/maremareshotel/";
+        // window.location.href = "https://www.instagram.com/maremareshotel/";
+        window.location.reload();
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
