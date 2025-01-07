@@ -58,7 +58,7 @@ const PortalCautive = ({
                 {loading ? (
                   <Image className="spinner" src={spinner} />
                 ) : (
-                  connectedzz || (
+                  connected || (
                     <Button
                       className="btn-submit"
                       variant="light"
