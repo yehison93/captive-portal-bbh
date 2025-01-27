@@ -1,13 +1,18 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
+const UNIFI_USERNAME = process.env.UNIFI_USERNAME;
+const UNIFI_PASSWORD = process.env.UNIFI_PASSWORD;
+const UNIFI_URL = process.env.UNIFI_URL;
+const UNIFI_SITEID = process.env.UNIFI_SITEID;
+
 const UnifiData = {
-  url: "https://buddhabarbeachhotel.ddns.net:8443",
-  // url: "https://unifi.ui.com/network-servers/04b8413b-c066-439a-b89a-edb14818ea51",
-  siteID: "d41gke5t",
-  userName: "API.Admin",
-  pw: "123456BBH#",
+  url: UNIFI_URL,
+  siteID: UNIFI_SITEID,
+  userName: UNIFI_USERNAME,
+  pw: UNIFI_PASSWORD,
 };
 
 const App = () => {
