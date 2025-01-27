@@ -5,7 +5,7 @@ import "./App.css";
 const UnifiData = {
   url: "https://buddhabarbeachhotel.ddns.net:8443",
   siteID: "d41gke5t",
-  pwSuffixed: "BBH#",
+  pw: "123456BBH#",
 };
 
 const App = () => {
@@ -54,7 +54,7 @@ const App = () => {
             minutes: time,
             url: UnifiData.url,
             siteID: UnifiData.siteID,
-            pwSuffixed: UnifiData.pwSuffixed,
+            pwSuffixed: UnifiData.pw,
           }),
         }
       );
