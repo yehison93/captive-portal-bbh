@@ -9,10 +9,10 @@ const UNIFI_URL = process.env.UNIFI_URL;
 const UNIFI_SITEID = process.env.UNIFI_SITEID;
 
 const UnifiData = {
-  url: "https://buddhabarbeachhotel.ddns.net:8443",
-  siteID: "d41gke5t",
-  userName: "API.Admin",
-  pw: "123456BBH#",
+  url: UNIFI_URL,
+  siteID: UNIFI_SITEID,
+  userName: UNIFI_USERNAME,
+  pw: UNIFI_PASSWORD,
 };
 
 const App = () => {
