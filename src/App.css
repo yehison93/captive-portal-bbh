@@ -14,7 +14,7 @@
 .bg-img {
   position: absolute;
   opacity: 40%;
-  animation: rotateImg 240s infinite alternate;
+  animation: rotateImg 120s infinite alternate;
 }
 
 .img-logo {
@@ -95,7 +95,7 @@
     transform: rotate(0) scale(1);
   }
   100% {
-    transform: rotate(360deg) scale(3);
+    transform: rotate(360deg) scale(2);
   }
 }
 
