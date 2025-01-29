@@ -3,6 +3,11 @@ import { useState, useEffect } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
+const UNIFI_USERNAME = process.env.UNIFI_USERNAME;
+const UNIFI_PASSWORD = process.env.UNIFI_PASSWORD;
+const UNIFI_URL = process.env.UNIFI_URL;
+const UNIFI_SITEID = process.env.UNIFI_SITEID;
+
 const UnifiData = {
   url: "https://buddhabarbeachhotel.ddns.net:8443",
   siteID: "d41gke5t",
