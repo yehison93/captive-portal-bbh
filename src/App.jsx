@@ -3,11 +3,6 @@ import { useState, useEffect } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
-const UNIFI_USERNAME = process.env.UNIFI_USERNAME;
-const UNIFI_PASSWORD = process.env.UNIFI_PASSWORD;
-const UNIFI_URL = process.env.UNIFI_URL;
-const UNIFI_SITEID = process.env.UNIFI_SITEID;
-
 const UnifiData = {
   url: "https://buddhabarbeachhotel.ddns.net:8443",
   siteID: "d41gke5t",
@@ -77,14 +72,14 @@ const App = () => {
         window.location.href = "http://www.instagram.com/maremareshotel/";
       } else {
         setMessage(
-          `Hubo un problema al conectarse, intenta de nuevo mas tarde.`
+          `Hubo un problema al conectarse, intenta de nuevo más tarde.`
         );
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
-      // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setMessage(`Error de conexión, intente de nuevo.`);
+      setLoading(false);
     }
   };
 
