@@ -2,16 +2,11 @@ import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
-// import logoInvitado01 from "../assets/sponsors/logoInvitado04.png";
+import logoShelumSpa from "../assets/sponsors/logoShelumSpa.png";
 // import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
 // import logoInvitado01 from "../assets/sponsors/logoinvitado01.png";
 
 const sponsorItem = [
-  // {
-  //   name: "Bravos",
-  //   img: logoInvitado01,
-  //   slogan: "¡Bienvenidos!",
-  // },
   {
     name: "Tecnonet",
     img: logoTecnonet,
@@ -26,6 +21,11 @@ const sponsorItem = [
     name: "Brisas",
     img: logoBrisas,
     slogan: "Tradición que puedes saborear",
+  },
+  {
+    name: "Shelum Spa",
+    img: logoShelumSpa,
+    slogan: null,
   },
 ];
 
