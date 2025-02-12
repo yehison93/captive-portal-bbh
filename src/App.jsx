@@ -68,7 +68,7 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-
+        window.location.reload();
         window.location.href = "http://www.instagram.com/maremareshotel/";
       } else {
         setMessage(
