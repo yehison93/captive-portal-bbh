@@ -69,9 +69,7 @@ const App = () => {
         setConnected(true);
         setLoading(false);
         window.location.reload();
-        setTimeout(function () {
-          window.location.replace("http://www.instagram.com/maremareshotel/");
-        }, 1000);
+        // window.location.href = "http://www.instagram.com/maremareshotel/";
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
