@@ -3,8 +3,6 @@ import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
 import logoShelumSpa from "../assets/sponsors/logoShelumSpa.png";
-// import logoInvitado02 from "../assets/sponsors/Oriente-2024-H.png";
-// import logoInvitado01 from "../assets/sponsors/logoinvitado01.png";
 
 const sponsorItem = [
   {
