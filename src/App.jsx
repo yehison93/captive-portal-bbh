@@ -68,11 +68,10 @@ const App = () => {
         setMessage(`Conexión exitosa, puede cerrar esta página.`);
         setConnected(true);
         setLoading(false);
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           window.location.reload();
-        }, [1000]);
-        return clearTimeout(timer);
-        // window.location.href = "http://www.instagram.com/maremareshotel/";
+          window.location.href = "http://www.instagram.com/maremareshotel/";
+        }, 1000);
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
