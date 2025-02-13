@@ -11,9 +11,7 @@ const UnifiData = {
 };
 
 const App = () => {
-  const [message, setMessage] = useState(
-    "Conecte para disfrutar de la red wifi."
-  );
+  const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
@@ -39,7 +37,6 @@ const App = () => {
     getMacAddressFromUrl();
     window.addEventListener("online", updateOnlineStatus);
     window.addEventListener("offline", updateOnlineStatus);
-    isOnline && setMessage("Disfrute de nuestra red wifi.");
 
     return () => {
       window.removeEventListener("online", updateOnlineStatus);
