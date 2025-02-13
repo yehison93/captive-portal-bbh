@@ -67,13 +67,13 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(`Conexión exitosa, puede cerrar esta página.`);
+        setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
         setTimeout(() => {
           window.location.reload();
           // window.location.href = "http://www.instagram.com/maremareshotel/";
-        }, 1000);
+        }, 500);
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
