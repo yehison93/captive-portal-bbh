@@ -68,9 +68,8 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        window.open(
-          "https://www.instagram.com/maremareshotel/?hl=es",
-          "_blank"
+        window.location.assign(
+          "https://www.instagram.com/maremareshotel/?hl=es"
         );
       } else {
         setMessage(
