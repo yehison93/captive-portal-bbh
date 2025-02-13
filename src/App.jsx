@@ -15,6 +15,7 @@ const App = () => {
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
+  const [online, setOnline] = useState(navigator.onLine);
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -30,6 +31,7 @@ const App = () => {
 
   useEffect(() => {
     getMacAddressFromUrl();
+    setOnline(navigator.onLine);
   }, []);
 
   const handleConnect = async (upBandWidth, downBandWidth, time) => {
@@ -93,6 +95,7 @@ const App = () => {
       message={message}
       loading={loading}
       connected={connected}
+      online={online}
     />
   );
 };

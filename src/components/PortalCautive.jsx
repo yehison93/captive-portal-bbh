@@ -14,6 +14,7 @@ const PortalCautive = ({
   message,
   loading,
   connected,
+  online,
 }) => {
   const [numItem, setNumItem] = useState(0);
 
@@ -58,7 +59,7 @@ const PortalCautive = ({
                   <Image className="spinner" src={spinner} />
                 ) : (
                   !connected &&
-                  (navigator.onLine ? (
+                  (online ? (
                     <Button
                       className="btn-submit"
                       variant="light"
