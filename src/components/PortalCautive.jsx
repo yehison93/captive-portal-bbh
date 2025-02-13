@@ -59,10 +59,10 @@ const PortalCautive = ({
                 {loading ? (
                   <Image className="spinner" src={spinner} />
                 ) : (
-                  isPageLoaded &&
                   !connected &&
                   (isOnline ? (
                     <Button
+                      hidden={!isPageLoaded}
                       className="btn-submit"
                       variant="light"
                       href="http://www.instagram.com/maremareshotel/"
@@ -71,6 +71,7 @@ const PortalCautive = ({
                     </Button>
                   ) : (
                     <Button
+                      hidden={!isPageLoaded}
                       className="btn-submit"
                       variant="light"
                       onClick={() => handleConnect(8000, 8000, 10080)}
