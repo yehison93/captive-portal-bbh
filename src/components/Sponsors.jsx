@@ -23,7 +23,7 @@ const sponsorItem = [
   {
     name: "Shelum Spa",
     img: logoShelumSpa,
-    slogan: null,
+    slogan: "Te hace sentir y vivir mejor",
   },
 ];
 
