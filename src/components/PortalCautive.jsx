@@ -14,23 +14,14 @@ const PortalCautive = ({
   message,
   loading,
   connected,
-  isOnline,
 }) => {
   const [numItem, setNumItem] = useState(0);
-  const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     if (numItem === 10) {
       handleConnect(20000, 20000, 43800);
     }
   }, [handleConnect, numItem]);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsHidden(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const incrementItem = () => {
     setNumItem((item) => item + 1);
@@ -66,26 +57,15 @@ const PortalCautive = ({
                 {loading ? (
                   <Image className="spinner" src={spinner} />
                 ) : (
-                  !connected &&
-                  (isOnline ? (
+                  !connected && (
                     <Button
-                      hidden={isHidden}
-                      className="btn-submit"
-                      variant="light"
-                      href="http://www.instagram.com/maremareshotel/"
-                    >
-                      NAVEGAR
-                    </Button>
-                  ) : (
-                    <Button
-                      hidden={isHidden}
                       className="btn-submit"
                       variant="light"
                       onClick={() => handleConnect(8000, 8000, 10080)}
                     >
                       CONECTAR
                     </Button>
-                  ))
+                  )
                 )}
               </>
             ) : (

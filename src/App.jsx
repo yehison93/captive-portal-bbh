@@ -15,7 +15,6 @@ const App = () => {
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
-  const [isOnline, setOnline] = useState(navigator.onLine);
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -28,19 +27,9 @@ const App = () => {
       );
     }
   };
-  const updateOnlineStatus = () => {
-    setOnline(navigator.onLine);
-  };
 
   useEffect(() => {
     getMacAddressFromUrl();
-    window.addEventListener("online", updateOnlineStatus);
-    window.addEventListener("offline", updateOnlineStatus);
-
-    return () => {
-      window.removeEventListener("online", updateOnlineStatus);
-      window.removeEventListener("offline", updateOnlineStatus);
-    };
   }, []);
 
   const handleConnect = async (upBandWidth, downBandWidth, time) => {
@@ -79,10 +68,10 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        setTimeout(() => {
-          window.location.reload();
-          // window.location.href = "http://www.instagram.com/maremareshotel/";
-        }, 500);
+        window.open(
+          "https://www.instagram.com/maremareshotel/?hl=es",
+          "_blank"
+        );
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
@@ -104,7 +93,6 @@ const App = () => {
       message={message}
       loading={loading}
       connected={connected}
-      isOnline={isOnline}
     />
   );
 };
