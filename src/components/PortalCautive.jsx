@@ -62,17 +62,17 @@ const PortalCautive = ({
                     <Button
                       className="btn-submit"
                       variant="light"
-                      onClick={() => handleConnect(8000, 8000, 10080)}
+                      href="http://www.instagram.com/maremareshotel/"
                     >
-                      CONECTAR
+                      NAVEGAR
                     </Button>
                   ) : (
                     <Button
                       className="btn-submit"
                       variant="light"
-                      href="http://www.instagram.com/maremareshotel/"
+                      onClick={() => handleConnect(8000, 8000, 10080)}
                     >
-                      NAVEGAR
+                      CONECTAR
                     </Button>
                   ))
                 )}
