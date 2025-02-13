@@ -8,7 +8,13 @@ import background from "../assets/background.jpg";
 import spinner from "../assets/logoSpinner.png";
 
 /* eslint-disable react/prop-types */
-const PortalCautive = ({ macAddress, handleConnect, message, loading, connected }) => {
+const PortalCautive = ({
+  macAddress,
+  handleConnect,
+  message,
+  loading,
+  connected,
+}) => {
   const [numItem, setNumItem] = useState(0);
 
   useEffect(() => {
@@ -25,8 +31,16 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading, connected 
     <Container fluid className="main-container bg-dark gap-1">
       <Image src={background} className="bg-img" />
       <Row>
-        <Card className="container-card bg-transparent text-light text-center gap-1" style={{ width: "30rem" }}>
-          <Card.Img variant="top" src={logo} className="img-logo" onClick={incrementItem} />
+        <Card
+          className="container-card bg-transparent text-light text-center gap-1"
+          style={{ width: "30rem" }}
+        >
+          <Card.Img
+            variant="top"
+            src={logo}
+            className="img-logo"
+            onClick={incrementItem}
+          />
           <Card.Body>
             <Card.Title>
               <Stack direction="horizontal" className="justify-content-center">
@@ -43,7 +57,8 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading, connected 
                 {loading ? (
                   <Image className="spinner" src={spinner} />
                 ) : (
-                  !connected && (
+                  !connected &&
+                  (navigator.onLine ? (
                     <Button
                       className="btn-submit"
                       variant="light"
@@ -51,7 +66,15 @@ const PortalCautive = ({ macAddress, handleConnect, message, loading, connected 
                     >
                       CONECTAR
                     </Button>
-                  )
+                  ) : (
+                    <Button
+                      className="btn-submit"
+                      variant="light"
+                      href="http://www.instagram.com/maremareshotel/"
+                    >
+                      NAVEGAR
+                    </Button>
+                  ))
                 )}
               </>
             ) : (
