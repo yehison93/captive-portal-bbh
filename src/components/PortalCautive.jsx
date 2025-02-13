@@ -62,7 +62,7 @@ const PortalCautive = ({
                   !connected &&
                   (isOnline ? (
                     <Button
-                      hidden={isReady}
+                      hidden={!isReady}
                       className="btn-submit"
                       variant="light"
                       href="http://www.instagram.com/maremareshotel/"
@@ -71,7 +71,7 @@ const PortalCautive = ({
                     </Button>
                   ) : (
                     <Button
-                      hidden={isReady}
+                      hidden={!isReady}
                       className="btn-submit"
                       variant="light"
                       onClick={() => handleConnect(8000, 8000, 10080)}
