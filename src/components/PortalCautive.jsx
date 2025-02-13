@@ -15,7 +15,6 @@ const PortalCautive = ({
   loading,
   connected,
   isOnline,
-  isPageLoaded,
 }) => {
   const [numItem, setNumItem] = useState(0);
 
@@ -62,7 +61,6 @@ const PortalCautive = ({
                   !connected &&
                   (isOnline ? (
                     <Button
-                      hidden={!isPageLoaded}
                       className="btn-submit"
                       variant="light"
                       href="http://www.instagram.com/maremareshotel/"
@@ -71,7 +69,6 @@ const PortalCautive = ({
                     </Button>
                   ) : (
                     <Button
-                      hidden={!isPageLoaded}
                       className="btn-submit"
                       variant="light"
                       onClick={() => handleConnect(8000, 8000, 10080)}
