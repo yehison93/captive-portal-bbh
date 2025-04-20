@@ -60,7 +60,6 @@ const PortalCautive = ({
                   variant="light"
                   href={instagramUrl}
                   hidden={!connected}
-                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   NAVEGAR
