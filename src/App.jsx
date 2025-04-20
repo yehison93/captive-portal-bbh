@@ -72,10 +72,7 @@ const App = () => {
         if (newWindow) {
           newWindow.opener = null;
         } else {
-          setMessage(
-            "No se pudo abrir la página en una nueva ventana. Por favor, verifica tu configuración de bloqueador de ventanas emergentes."
-          );
-          window.location.assign(instagramUrl);
+          setMessage("Conectado, haga clic en NAVEGAR para continuar");
         }
       } else {
         setMessage(
@@ -98,6 +95,7 @@ const App = () => {
       message={message}
       loading={loading}
       connected={connected}
+      instagramUrl={instagramUrl}
     />
   );
 };

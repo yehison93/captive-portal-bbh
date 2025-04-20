@@ -14,6 +14,7 @@ const PortalCautive = ({
   message,
   loading,
   connected,
+  instagramUrl,
 }) => {
   const [numItem, setNumItem] = useState(0);
 
@@ -54,6 +55,16 @@ const PortalCautive = ({
                 <Card.Text>
                   <h5>{message}</h5>
                 </Card.Text>
+                <Button
+                  className="btn-submit"
+                  variant="light"
+                  href={instagramUrl}
+                  hidden={connected}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NAVEGAR
+                </Button>
                 {loading ? (
                   <Image className="spinner" src={spinner} />
                 ) : (
