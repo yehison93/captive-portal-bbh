@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { useState, useEffect } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
@@ -12,6 +11,7 @@ const UnifiData = {
 
 const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
+  const instagramUrl = "https://www.instagram.com/maremareshotel/?hl=es";
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
@@ -68,9 +68,15 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        window.location.assign(
-          "https://www.instagram.com/maremareshotel/?hl=es"
-        );
+        const newWindow = window.open(instagramUrl, "_blank");
+        if (newWindow) {
+          newWindow.opener = null;
+        } else {
+          setMessage(
+            "No se pudo abrir la página en una nueva ventana. Por favor, verifica tu configuración de bloqueador de ventanas emergentes."
+          );
+          window.location.assign(instagramUrl);
+        }
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
