@@ -59,7 +59,7 @@ const PortalCautive = ({
                   className="btn-submit"
                   variant="light"
                   href={instagramUrl}
-                  hidden={connected}
+                  hidden={!connected}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
