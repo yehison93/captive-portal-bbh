@@ -11,7 +11,7 @@ const UnifiData = {
 
 const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
-  const instagramUrl = "https://www.instagram.com/maremareshotel/?hl=es";
+  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es?nocache=${Date.now()}`;
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
