@@ -27,8 +27,7 @@
 }
 
 .btn-submit {
-  font-family: Audiowide, "Courier New", Courier, monospace !important;
-  color: tra;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif !important;
   animation: growShrink 1s ease-in-out infinite alternate;
 }
 
