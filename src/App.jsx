@@ -3,7 +3,7 @@ import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
 const UnifiData = {
-  url: "https://kwl078bwsae2.share.zrok.io",
+  url: "https://buddhabarbeachhotel.ddns.net:8443",
   siteID: "d41gke5t",
   userName: "API.Admin",
   pw: "123456BBH#",
