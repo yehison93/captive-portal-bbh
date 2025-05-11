@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import Sponsors from "./Sponsors";
 import Footer from "./Footer";
 import logo from "../assets/logo.png";
-import background from "../assets/background.jpg";
 import spinner from "../assets/logoSpinner.png";
 
-/* eslint-disable react/prop-types */
+// Importa dinámicamente todas las imágenes de la carpeta Fotos_Maremares
+const images = import.meta.glob(
+  "../assets/Fotos_Maremares/*.{png,jpg,jpeg,heic}"
+);
+
 const PortalCautive = ({
   macAddress,
   handleConnect,
@@ -17,6 +20,25 @@ const PortalCautive = ({
   instagramUrl,
 }) => {
   const [numItem, setNumItem] = useState(0);
+
+  // Estado para almacenar la imagen aleatoria
+  const [randomImage, setRandomImage] = useState("");
+
+  useEffect(() => {
+    // Convierte las claves del objeto `images` en un array
+    const imagePaths = Object.keys(images);
+
+    if (imagePaths.length > 0) {
+      // Selecciona una imagen aleatoria
+      const randomIndex = Math.floor(Math.random() * imagePaths.length);
+
+      // Carga la imagen seleccionada
+      const selectedImagePath = imagePaths[randomIndex];
+      images[selectedImagePath]().then((module) => {
+        setRandomImage(module.default); // Establece la ruta de la imagen
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (numItem === 10) {
@@ -30,7 +52,8 @@ const PortalCautive = ({
 
   return (
     <Container fluid className="main-container bg-dark gap-1">
-      <Image src={background} className="bg-img" />
+      {/* Usa la imagen aleatoria como fondo */}
+      {randomImage && <Image src={randomImage} className="bg-img" />}
       <Row>
         <Card
           className="container-card bg-transparent text-light text-center gap-1"
