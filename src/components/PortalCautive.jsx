@@ -53,7 +53,14 @@ const PortalCautive = ({
   return (
     <Container fluid className="main-container bg-dark gap-1">
       {/* Usa la imagen aleatoria como fondo */}
-      {randomImage && <Image src={randomImage} className="bg-img" />}
+
+      <Image
+        src={randomImage}
+        alt="Imagen de fondo, puede contener imágenes del hotel"
+        className="bg-img"
+        loading="eager"
+      />
+
       <Row>
         <Card
           className="container-card bg-transparent text-light text-center gap-1"

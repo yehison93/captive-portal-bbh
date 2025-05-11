@@ -91,11 +91,11 @@
 /* Animación para PC */
 @keyframes rotateImgPC {
   0% {
-    transform: translate(-10%, 0) scale(1.3);
+    transform: translateX(1000px) scale(1);
     opacity: 60%;
   }
   100% {
-    transform: translate(10%, 0) scale(1.3);
+    transform: translateX(-1000px) scale(1);
     opacity: 60%;
   }
 }
@@ -103,11 +103,11 @@
 /* Animación para teléfonos */
 @keyframes rotateImgMobile {
   0% {
-    transform: translate(50%, 0) scale(1.3);
+    transform: translateX(1000px) scale(1);
     opacity: 60%;
   }
   100% {
-    transform: translate(-50%, 0) scale(1.3);
+    transform: translateX(-1000px) scale(1);
     opacity: 60%;
   }
 }
@@ -135,6 +135,7 @@
 /* Cambiar animación para pantallas pequeñas (teléfonos) */
 @media screen and (max-width: 768px) {
   .bg-img {
+    position: absolute;
     animation: rotateImgMobile 20s infinite ease-in-out alternate;
   }
 }
