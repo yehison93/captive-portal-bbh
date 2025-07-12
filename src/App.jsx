@@ -68,7 +68,6 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
-        const newWindow = window.open(instagramUrl, "_self");
         if (newWindow) {
           newWindow.opener = null;
         } else {
