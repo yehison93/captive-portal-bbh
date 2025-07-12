@@ -107,8 +107,9 @@ const App = () => {
         loading={loading}
         connected={connected}
         instagramUrl={instagramUrl}
+        showInstagramBtn={showInstagramBtn}
       />
-      {showInstagramBtn && (
+      {/* {showInstagramBtn && (
         <div style={{ textAlign: "center", marginTop: 20 }}>
           <button
             style={{
@@ -126,7 +127,7 @@ const App = () => {
             Ir a nuestro Instagram
           </button>
         </div>
-      )}
+      )} */}
     </>
   );
 };
