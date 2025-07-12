@@ -68,6 +68,7 @@ const App = () => {
         setMessage(`Conexión exitosa`);
         setConnected(true);
         setLoading(false);
+        const newWindow = window.location.reload();
         if (newWindow) {
           newWindow.opener = null;
         } else {
