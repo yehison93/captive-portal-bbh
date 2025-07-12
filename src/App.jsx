@@ -15,6 +15,7 @@ const App = () => {
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
+  const [showInstagramBtn, setShowInstagramBtn] = useState(false);
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -31,6 +32,20 @@ const App = () => {
   useEffect(() => {
     getMacAddressFromUrl();
   }, []);
+
+  // Chequea conectividad a internet haciendo fetch a un sitio externo
+  const checkInternetAccess = async () => {
+    try {
+      // Google generate_204 es ideal para este propósito
+      const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
+      // Si no lanza error, se asume acceso
+      setShowInstagramBtn(true);
+      setMessage("¡Ya tienes acceso a internet! Haz clic en el botón para ir a nuestro Instagram.");
+    } catch (e) {
+      // Si hay error, aún no hay acceso
+      setTimeout(checkInternetAccess, 2000); // Reintenta en 2 segundos
+    }
+  };
 
   const handleConnect = async (upBandWidth, downBandWidth, time) => {
     if (!macAddress) {
@@ -65,15 +80,10 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(`Conexión exitosa`);
+        setMessage(`Conexión exitosa, verificando acceso a internet...`);
         setConnected(true);
         setLoading(false);
-        const newWindow = window.location.reload();
-        if (newWindow) {
-          newWindow.opener = null;
-        } else {
-          setMessage("Conectado, haga clic en NAVEGAR para continuar");
-        }
+        setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
@@ -89,14 +99,35 @@ const App = () => {
   };
 
   return (
-    <PortalCautive
-      macAddress={macAddress}
-      handleConnect={handleConnect}
-      message={message}
-      loading={loading}
-      connected={connected}
-      instagramUrl={instagramUrl}
-    />
+    <>
+      <PortalCautive
+        macAddress={macAddress}
+        handleConnect={handleConnect}
+        message={message}
+        loading={loading}
+        connected={connected}
+        instagramUrl={instagramUrl}
+      />
+      {showInstagramBtn && (
+        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <button
+            style={{
+              background: "#E1306C",
+              color: "white",
+              border: "none",
+              borderRadius: 8,
+              padding: "12px 32px",
+              fontSize: 18,
+              cursor: "pointer",
+              fontWeight: "bold"
+            }}
+            onClick={() => window.open(instagramUrl, "_blank")}
+          >
+            Ir a nuestro Instagram
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 
