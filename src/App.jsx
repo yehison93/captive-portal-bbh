@@ -11,7 +11,7 @@ const UnifiData = {
 
 const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
-  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es?nocache=${Date.now()}`;
+  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
@@ -40,7 +40,7 @@ const App = () => {
       const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
       // Si no lanza error, se asume acceso
       setShowInstagramBtn(true);
-      setMessage("¡Ya tienes acceso a internet! Haz clic en el botón para ir a nuestro Instagram.");
+      setMessage("¡Ya tienes acceso a internet! Haz clic en el botón para navegar.");
     } catch (e) {
       // Si hay error, aún no hay acceso
       setTimeout(checkInternetAccess, 2000); // Reintenta en 2 segundos
@@ -109,25 +109,6 @@ const App = () => {
         instagramUrl={instagramUrl}
         showInstagramBtn={showInstagramBtn}
       />
-      {/* {showInstagramBtn && (
-        <div style={{ textAlign: "center", marginTop: 20 }}>
-          <button
-            style={{
-              background: "#E1306C",
-              color: "white",
-              border: "none",
-              borderRadius: 8,
-              padding: "12px 32px",
-              fontSize: 18,
-              cursor: "pointer",
-              fontWeight: "bold"
-            }}
-            onClick={() => window.open(instagramUrl, "_blank")}
-          >
-            Ir a nuestro Instagram
-          </button>
-        </div>
-      )} */}
     </>
   );
 };
