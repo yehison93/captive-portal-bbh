@@ -18,7 +18,8 @@ const PortalCautive = ({
   loading,
   connected,
   instagramUrl,
-  showInstagramBtn
+  showInstagramBtn,
+  isIOS
 }) => {
   const [numItem, setNumItem] = useState(0);
   // Guarda el índice aleatorio para evitar que cambie en cada render
@@ -48,8 +49,6 @@ const PortalCautive = ({
     setNumItem((item) => item + 1);
   };
 
-  // Detecta si el usuario está en iOS
-  const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   return (
     <Container fluid className="main-container bg-dark gap-1">
@@ -86,31 +85,16 @@ const PortalCautive = ({
                   <h5>{message}</h5>
                 </Card.Text>
                 {showInstagramBtn && (
-                  isIOS ? (
-                    <div style={{marginTop: 10}}>
-                      <p style={{color: "#ffc107", fontWeight: "bold"}}>
-                        ¡Conexión exitosa! Puedes cerrar esta ventana y abrir Safari para navegar libremente.<br />
-                        <span style={{wordBreak: "break-all"}}>Gracias por usar nuestro WiFi.</span>
-                      </p>
-                      <Button
-                        className="btn-submit"
-                        variant="light"
-                        onClick={() => window.close()}
-                        aria-label="Cerrar portal cautivo"
-                      >
-                        CERRAR
-                      </Button>
-                    </div>
-                  ) : (
+                   (
                     <Button
                       className="btn-submit"
                       variant="light"
-                      href={instagramUrl}
+                      href={!isIOS ? instagramUrl : "#"}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Ir a Instagram"
                     >
-                      NAVEGAR
+                     {isIOS ? "CERRAR" : "NAVEGAR"}
                     </Button>
                   )
                 )}

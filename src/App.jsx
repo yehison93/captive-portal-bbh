@@ -16,6 +16,10 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
   const [showInstagramBtn, setShowInstagramBtn] = useState(false);
+  
+  // Detecta si el usuario está en iOS
+  const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -108,6 +112,7 @@ const App = () => {
         connected={connected}
         instagramUrl={instagramUrl}
         showInstagramBtn={showInstagramBtn}
+        isIOS={isIOS}
       />
     </>
   );
