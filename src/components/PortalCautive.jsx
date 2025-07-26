@@ -89,7 +89,7 @@ const PortalCautive = ({
                     <Button
                       className="btn-submit"
                       variant="light"
-                      href={!isIOS ? instagramUrl : "#"}
+                      href={!isIOS ? instagramUrl : location.reload()}
                       aria-label="Ir a Instagram"
                     >
                      {isIOS ? "CERRAR" : "NAVEGAR"}
