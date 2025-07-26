@@ -21,25 +21,22 @@ const PortalCautive = ({
   showInstagramBtn
 }) => {
   const [numItem, setNumItem] = useState(0);
-
-  // Estado para almacenar la imagen aleatoria
+  // Guarda el índice aleatorio para evitar que cambie en cada render
+  const [randomIndex] = useState(() => {
+    const imagePaths = Object.keys(images);
+    return imagePaths.length > 0 ? Math.floor(Math.random() * imagePaths.length) : 0;
+  });
   const [randomImage, setRandomImage] = useState("");
 
   useEffect(() => {
-    // Convierte las claves del objeto `images` en un array
     const imagePaths = Object.keys(images);
-
     if (imagePaths.length > 0) {
-      // Selecciona una imagen aleatoria
-      const randomIndex = Math.floor(Math.random() * imagePaths.length);
-
-      // Carga la imagen seleccionada
       const selectedImagePath = imagePaths[randomIndex];
       images[selectedImagePath]().then((module) => {
-        setRandomImage(module.default); // Establece la ruta de la imagen
+        setRandomImage(module.default);
       });
     }
-  }, []);
+  }, [randomIndex]);
 
   useEffect(() => {
     if (numItem === 10) {
@@ -54,14 +51,12 @@ const PortalCautive = ({
   return (
     <Container fluid className="main-container bg-dark gap-1">
       {/* Usa la imagen aleatoria como fondo */}
-
       <Image
         src={randomImage}
-        alt="Imagen de fondo, puede contener imágenes del hotel"
+        alt="Imagen de fondo del hotel"
         className="bg-img"
-        loading="eager"
+        loading="lazy"
       />
-
       <Row>
         <Card
           className="container-card bg-transparent text-light text-center gap-1"
@@ -72,13 +67,14 @@ const PortalCautive = ({
             src={logo}
             className="img-logo"
             onClick={incrementItem}
+            alt="Logo Maremares"
           />
           <Card.Body>
             <Card.Title>
               <Stack direction="horizontal" className="justify-content-center">
-                <span className="palmeras">🌴</span>
+                <span className="palmeras" aria-label="Palmera">🌴</span>
                 <h1>¡Bienvenido!</h1>
-                <span className="palmeras">🌴</span>
+                <span className="palmeras" aria-label="Palmera">🌴</span>
               </Stack>
             </Card.Title>
             {macAddress ? (
@@ -87,23 +83,27 @@ const PortalCautive = ({
                   <h5>{message}</h5>
                 </Card.Text>
                 {showInstagramBtn &&
-                <Button
-                  className="btn-submit"
-                  variant="light"
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  NAVEGAR
-                </Button>}
+                  <Button
+                    className="btn-submit"
+                    variant="light"
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ir a Instagram"
+                  >
+                    NAVEGAR
+                  </Button>
+                }
                 {loading ? (
-                  <Image className="spinner" src={spinner} />
+                  <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (
                   !connected && (
                     <Button
                       className="btn-submit"
                       variant="light"
                       onClick={() => handleConnect(10000, 10000, 10080)}
+                      disabled={loading}
+                      aria-label="Conectar a WiFi"
                     >
                       CONECTAR
                     </Button>
