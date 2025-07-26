@@ -48,6 +48,9 @@ const PortalCautive = ({
     setNumItem((item) => item + 1);
   };
 
+  // Detecta si el usuario está en iOS
+  const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
   return (
     <Container fluid className="main-container bg-dark gap-1">
       {/* Usa la imagen aleatoria como fondo */}
@@ -82,18 +85,35 @@ const PortalCautive = ({
                 <Card.Text>
                   <h5>{message}</h5>
                 </Card.Text>
-                {showInstagramBtn &&
-                  <Button
-                    className="btn-submit"
-                    variant="light"
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Ir a Instagram"
-                  >
-                    NAVEGAR
-                  </Button>
-                }
+                {showInstagramBtn && (
+                  isIOS ? (
+                    <div style={{marginTop: 10}}>
+                      <p style={{color: "#ffc107", fontWeight: "bold"}}>
+                        ¡Conexión exitosa! Puedes cerrar esta ventana y abrir Safari para navegar libremente.<br />
+                        <span style={{wordBreak: "break-all"}}>Gracias por usar nuestro WiFi.</span>
+                      </p>
+                      <Button
+                        className="btn-submit"
+                        variant="light"
+                        onClick={() => window.close()}
+                        aria-label="Cerrar portal cautivo"
+                      >
+                        CERRAR
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button
+                      className="btn-submit"
+                      variant="light"
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ir a Instagram"
+                    >
+                      NAVEGAR
+                    </Button>
+                  )
+                )}
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (

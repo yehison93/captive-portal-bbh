@@ -40,10 +40,10 @@ const App = () => {
       const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
       // Si no lanza error, se asume acceso
       setShowInstagramBtn(true);
-      setMessage("¡Ya tienes acceso a internet! Haz clic en el botón para navegar.");
+      setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } catch (e) {
       // Si hay error, aún no hay acceso
-      setTimeout(checkInternetAccess, 2000); // Reintenta en 2 segundos
+      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
     }
   };
 
