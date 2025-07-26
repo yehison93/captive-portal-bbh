@@ -90,8 +90,6 @@ const PortalCautive = ({
                       className="btn-submit"
                       variant="light"
                       href={!isIOS ? instagramUrl : "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       aria-label="Ir a Instagram"
                     >
                      {isIOS ? "CERRAR" : "NAVEGAR"}
