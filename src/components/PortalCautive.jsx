@@ -18,7 +18,7 @@ const PortalCautive = ({
   loading,
   connected,
   instagramUrl,
-  showInstagramBtn,
+  // showInstagramBtn,
   isIOS
 }) => {
   const [numItem, setNumItem] = useState(0);
@@ -84,18 +84,15 @@ const PortalCautive = ({
                 <Card.Text>
                   <h5>{message}</h5>
                 </Card.Text>
-                {showInstagramBtn && (
-                   (
-                    <Button
-                      className="btn-submit"
-                      variant="light"
-                      onClick={isIOS ? () => location.reload() :  () => location.href = instagramUrl}
-                      aria-label="Ir a Instagram"
-                    >
-                     {isIOS ? "CERRAR" : "NAVEGAR"}
-                    </Button>
-                  )
-                )}
+                  <Button
+                    className="btn-submit"
+                    variant="light"
+                    onClick={isIOS ? () => location.reload() :  () => location.href = instagramUrl}
+                    aria-label="Ir a Instagram"
+                    hidden={!instagramUrl || !connected}
+                  >
+                    {isIOS ? "CERRAR" : "NAVEGAR"}
+                  </Button>
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (

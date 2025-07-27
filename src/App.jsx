@@ -38,18 +38,18 @@ const App = () => {
   }, []);
 
   // Chequea conectividad a internet haciendo fetch a un sitio externo
-  const checkInternetAccess = async () => {
-    try {
-      // Google generate_204 es ideal para este propósito
-      const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
-      // Si no lanza error, se asume acceso
-      setShowInstagramBtn(true);
-      setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
-    } catch (e) {
-      // Si hay error, aún no hay acceso
-      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
-    }
-  };
+  // const checkInternetAccess = async () => {
+  //   try {
+  //     // Google generate_204 es ideal para este propósito
+  //     const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
+  //     // Si no lanza error, se asume acceso
+  //     setShowInstagramBtn(true);
+  //     setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
+  //   } catch (e) {
+  //     // Si hay error, aún no hay acceso
+  //     setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
+  //   }
+  // };
 
   const handleConnect = async (upBandWidth, downBandWidth, time) => {
     if (!macAddress) {
@@ -87,7 +87,7 @@ const App = () => {
         setMessage(`Conexión exitosa, verificando acceso a internet...`);
         setConnected(true);
         setLoading(false);
-        setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
+        // setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
@@ -111,7 +111,7 @@ const App = () => {
         loading={loading}
         connected={connected}
         instagramUrl={instagramUrl}
-        showInstagramBtn={showInstagramBtn}
+        // showInstagramBtn={showInstagramBtn}
         isIOS={isIOS}
       />
     </>
