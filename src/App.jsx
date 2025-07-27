@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
@@ -14,6 +14,8 @@ const App = () => {
   const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
   const iosUrl = "http://captive.apple.com/hotspot-detect.html"; // URL para iOS
+  const retryCountRef = useRef(0);
+  const MAX_RETRIES = 10; // Número máximo de reintentos para verificar acceso a internet
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
@@ -43,13 +45,22 @@ const App = () => {
   const checkInternetAccess = async () => {
     try {
       // Google generate_204 es ideal para este propósito
-      const res = await fetch(androidUrl , { mode: "no-cors" });
+      const res = await fetch(androidUrl ,  { mode: "no-cors", cache: "no-store" });
       // Si no lanza error, se asume acceso
       setShowInstagramBtn(true);
+      retryCountRef.current = 0;
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } catch (e) {
       // Si hay error, aún no hay acceso
-      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
+       retryCountRef.current += 1;
+       setMessage(`Intento ${retryCountRef.current}: Acceso a internet aún no disponible.`)
+        if (retryCountRef.current < MAX_RETRIES) {
+          setMessage(`Intento ${retryCountRef.current}: Acceso a internet aún no disponible.`);
+          setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundo
+      } else {
+          setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
+      }
+      
     }
   };
 
