@@ -85,8 +85,6 @@ const PortalCautive = ({
                 <Card.Text>
                   <h5>{message}</h5>
                 </Card.Text>
-                {showInstagramBtn && (
-                   (
                     <Button
                       className="btn-submit"
                       variant="light"
@@ -95,8 +93,6 @@ const PortalCautive = ({
                     >
                      {isIOS ? "CERRAR" : "NAVEGAR"}
                     </Button>
-                  )
-                )}
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (
