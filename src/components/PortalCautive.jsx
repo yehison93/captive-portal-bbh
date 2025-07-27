@@ -89,7 +89,7 @@ const PortalCautive = ({
                   <Button
                     className="btn-submit"
                     variant="light"
-                    onClick={isIOS ? () => location.href = iosUrl :  () => location.href = instagramUrl}
+                    href={isIOS ? iosUrl : instagramUrl}
                     aria-label="Ir a Instagram"
                     hidden={!instagramUrl || !connected}
                   >
