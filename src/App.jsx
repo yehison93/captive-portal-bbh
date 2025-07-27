@@ -49,7 +49,7 @@ const App = () => {
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } catch (e) {
       // Si hay error, aún no hay acceso
-      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
+      setTimeout(checkInternetAccess, 5000); // Reintenta en 1 segundos
     }
   };
 
@@ -89,7 +89,7 @@ const App = () => {
         setMessage(`Conexión exitosa, verificando acceso a internet...`);
         setConnected(true);
         setLoading(false);
-        setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
+        setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 2s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
