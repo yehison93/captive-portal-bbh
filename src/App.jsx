@@ -49,7 +49,7 @@ const App = () => {
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } catch (e) {
       // Si hay error, aún no hay acceso
-      setTimeout(checkInternetAccess, 5000); // Reintenta en 1 segundos
+      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
     }
   };
 
