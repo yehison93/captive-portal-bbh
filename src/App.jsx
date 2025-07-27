@@ -13,7 +13,7 @@ const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
   const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
-  const iosUrl = "http://captive.apple.com/generate_204"; // URL para iOS
+  const iosUrl = "http://captive.apple.com/hotspot-detect.html"; // URL para iOS
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
