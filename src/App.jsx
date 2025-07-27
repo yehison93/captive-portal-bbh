@@ -11,11 +11,13 @@ const UnifiData = {
 
 const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
-  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
+  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`; // URL de Instagram
+  const androidUrl = "https://www.google.com/generate_204"; // URL para Android
+  const iosUrl = "http://captive.apple.com/generate_204"; // URL para iOS
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
-  const [showInstagramBtn, setShowInstagramBtn] = useState(false);
+  // const [showInstagramBtn, setShowInstagramBtn] = useState(false);
   
   // Detecta si el usuario está en iOS
   const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -41,7 +43,7 @@ const App = () => {
   // const checkInternetAccess = async () => {
   //   try {
   //     // Google generate_204 es ideal para este propósito
-  //     const res = await fetch("https://www.google.com/generate_204", { mode: "no-cors" });
+  //     const res = await fetch("http://www.google.com/generate_204", { mode: "no-cors" });
   //     // Si no lanza error, se asume acceso
   //     setShowInstagramBtn(true);
   //     setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
@@ -84,7 +86,7 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // setMessage(`Conexión exitosa, verificando acceso a internet...`);
+        setMessage(`Conexión exitosa. Disfruta de nuestra red wifi.`);
         setConnected(true);
         setLoading(false);
         // setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
@@ -113,6 +115,8 @@ const App = () => {
         instagramUrl={instagramUrl}
         // showInstagramBtn={showInstagramBtn}
         isIOS={isIOS}
+        iosUrl={iosUrl}
+        androidUrl={androidUrl}
       />
     </>
   );
