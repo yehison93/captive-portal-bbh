@@ -86,10 +86,10 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(`Conexión exitosa, verificando acceso a internet...`);
+        setMessage(isIOS ? "Conexión exitosa, puedes cerrar la ventana." : "Conexión exitosa, verificando acceso a internet...");
         setConnected(true);
         setLoading(false);
-        setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 2s
+        setTimeout(checkInternetAccess, 500); // Comienza a chequear acceso tras 2s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
