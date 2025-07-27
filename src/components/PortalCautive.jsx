@@ -19,9 +19,8 @@ const PortalCautive = ({
   connected,
   instagramUrl,
   showInstagramBtn,
-  isIOS
+  isIOS,
   iosUrl,
-  androidUrl  
 }) => {
   const [numItem, setNumItem] = useState(0);
   // Guarda el índice aleatorio para evitar que cambie en cada render
