@@ -84,7 +84,7 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(`Conexión exitosa, verificando acceso a internet...`);
+        // setMessage(`Conexión exitosa, verificando acceso a internet...`);
         setConnected(true);
         setLoading(false);
         // setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
