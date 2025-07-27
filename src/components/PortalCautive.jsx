@@ -59,7 +59,7 @@ const PortalCautive = ({
         src={randomImage}
         alt="Imagen de fondo del hotel"
         className="bg-img"
-        loading="lazy"
+        loading="eager"
       />
       <Row>
         <Card
