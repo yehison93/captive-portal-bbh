@@ -43,7 +43,7 @@ const App = () => {
   const checkInternetAccess = async () => {
     try {
       // Google generate_204 es ideal para este propósito
-      const res = await fetch(isIOS ? iosUrl : androidUrl , { mode: "no-cors" });
+      const res = await fetch(androidUrl , { mode: "no-cors" });
       // Si no lanza error, se asume acceso
       setShowInstagramBtn(true);
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
@@ -89,7 +89,7 @@ const App = () => {
         setMessage(isIOS ? "Conexión exitosa, puedes cerrar la ventana." : "Conexión exitosa, verificando acceso a internet...");
         setConnected(true);
         setLoading(false);
-        setTimeout(checkInternetAccess, 500); // Comienza a chequear acceso tras 2s
+        setTimeout(checkInternetAccess, 500); // Comienza a chequear acceso tras 0.5s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
