@@ -11,13 +11,13 @@ const UnifiData = {
 
 const App = () => {
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
-  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`; // URL de Instagram
+  const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
   const iosUrl = "http://captive.apple.com/generate_204"; // URL para iOS
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
-  // const [showInstagramBtn, setShowInstagramBtn] = useState(false);
+  const [showInstagramBtn, setShowInstagramBtn] = useState(false);
   
   // Detecta si el usuario está en iOS
   const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -40,18 +40,18 @@ const App = () => {
   }, []);
 
   // Chequea conectividad a internet haciendo fetch a un sitio externo
-  // const checkInternetAccess = async () => {
-  //   try {
-  //     // Google generate_204 es ideal para este propósito
-  //     const res = await fetch("http://www.google.com/generate_204", { mode: "no-cors" });
-  //     // Si no lanza error, se asume acceso
-  //     setShowInstagramBtn(true);
-  //     setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
-  //   } catch (e) {
-  //     // Si hay error, aún no hay acceso
-  //     setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
-  //   }
-  // };
+  const checkInternetAccess = async () => {
+    try {
+      // Google generate_204 es ideal para este propósito
+      const res = await fetch(isIOS ? iosUrl : androidUrl , { mode: "no-cors" });
+      // Si no lanza error, se asume acceso
+      setShowInstagramBtn(true);
+      setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
+    } catch (e) {
+      // Si hay error, aún no hay acceso
+      setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundos
+    }
+  };
 
   const handleConnect = async (upBandWidth, downBandWidth, time) => {
     if (!macAddress) {
@@ -86,10 +86,10 @@ const App = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(`Conexión exitosa. Disfruta de nuestra red wifi.`);
+        setMessage(`Conexión exitosa, verificando acceso a internet...`);
         setConnected(true);
         setLoading(false);
-        // setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
+        setTimeout(checkInternetAccess, 2000); // Comienza a chequear acceso tras 2s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
@@ -113,7 +113,7 @@ const App = () => {
         loading={loading}
         connected={connected}
         instagramUrl={instagramUrl}
-        // showInstagramBtn={showInstagramBtn}
+        showInstagramBtn={showInstagramBtn}
         isIOS={isIOS}
         iosUrl={iosUrl}
         androidUrl={androidUrl}

@@ -18,10 +18,10 @@ const PortalCautive = ({
   loading,
   connected,
   instagramUrl,
-  iosUrl,
-  androidUrl,
-  // showInstagramBtn,
+  showInstagramBtn,
   isIOS
+  iosUrl,
+  androidUrl  
 }) => {
   const [numItem, setNumItem] = useState(0);
   // Guarda el índice aleatorio para evitar que cambie en cada render
@@ -59,7 +59,7 @@ const PortalCautive = ({
         src={randomImage}
         alt="Imagen de fondo del hotel"
         className="bg-img"
-        loading="eager"
+        loading="lazy"
       />
       <Row>
         <Card
@@ -86,16 +86,18 @@ const PortalCautive = ({
                 <Card.Text>
                   <h5>{message}</h5>
                 </Card.Text>
-                  <Button
-                    className="btn-submit"
-                    variant="light"
-                    href={isIOS ? iosUrl : instagramUrl}
-                    aria-label="Ir a Instagram"
-                    hidden={!instagramUrl || !connected}
-                  >
-                    {/* "{isIOS ? "CERRAR" : "NAVEGAR"}" */}
-                    NAVEGAR
-                  </Button>
+                {showInstagramBtn && (
+                   (
+                    <Button
+                      className="btn-submit"
+                      variant="light"
+                      aria-label="Ir a Instagram"
+                      href={isIOS ? iosUrl : instagramUrl}
+                    >
+                     {isIOS ? "CERRAR" : "NAVEGAR"}
+                    </Button>
+                  )
+                )}
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (
