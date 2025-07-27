@@ -90,9 +90,9 @@ const PortalCautive = ({
                       variant="light"
                       aria-label="Ir a Instagram"
                       href={isIOS ? iosUrl : instagramUrl}
-                      hidden={loading || !connected}
+                      hidden={loading || !connected || !showInstagramBtn}
                     >
-                     {isIOS ? "CERRAR" : "NAVEGAR"}
+                     NAVEGAR
                     </Button>
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
