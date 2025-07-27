@@ -90,6 +90,7 @@ const PortalCautive = ({
                       variant="light"
                       aria-label="Ir a Instagram"
                       href={isIOS ? iosUrl : instagramUrl}
+                      hidden={!loading || !connected}
                     >
                      {isIOS ? "CERRAR" : "NAVEGAR"}
                     </Button>
