@@ -15,7 +15,7 @@ const App = () => {
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
   const iosUrl = "http://captive.apple.com/hotspot-detect.html"; // URL para iOS
   const retryCountRef = useRef(0);
-  const MAX_RETRIES = 10; // Número máximo de reintentos para verificar acceso a internet
+  const MAX_RETRIES = 30; // Número máximo de reintentos para verificar acceso a internet
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
@@ -53,9 +53,9 @@ const App = () => {
     } catch (e) {
       // Si hay error, aún no hay acceso
        retryCountRef.current += 1;
-       setMessage(`Intento ${retryCountRef.current}: Acceso a internet aún no disponible.`)
+       setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`)
         if (retryCountRef.current < MAX_RETRIES) {
-          setMessage(`Intento ${retryCountRef.current}: Acceso a internet aún no disponible.`);
+          setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
           setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundo
       } else {
           setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
