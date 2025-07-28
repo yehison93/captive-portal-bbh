@@ -53,9 +53,9 @@ const App = () => {
     } catch (e) {
       // Si hay error, aún no hay acceso
        retryCountRef.current += 1;
-       setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`)
+       setMessage(`Intento ${retryCountRef.current},         Acceso a internet aún no disponible...`)
         if (retryCountRef.current < MAX_RETRIES) {
-          setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
+          setMessage(`Intento ${retryCountRef.current},       Acceso a internet aún no disponible...`);
           setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundo
       } else {
           setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
