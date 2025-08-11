@@ -42,26 +42,39 @@ const App = () => {
   }, []);
 
   // Chequea conectividad a internet haciendo fetch a un sitio externo
+  const iosTestUrls = [
+    "http://captive.apple.com/hotspot-detect.html",
+    "https://www.apple.com/library/test/success.html",
+    "https://www.google.com/generate_204"
+  ];
+
   const checkInternetAccess = async () => {
-    try {
-      // Google generate_204 es ideal para este propósito
-      const res = await fetch(androidUrl ,  { mode: "no-cors", cache: "no-store" });
-      // Si no lanza error, se asume acceso
+    const testUrls = isIOS ? iosTestUrls : [androidUrl];
+    let success = false;
+
+    for (let url of testUrls) {
+      try {
+        await fetch(url, { mode: "no-cors", cache: "no-store" });
+        success = true;
+        break;
+      } catch (e) {
+        // Si falla, prueba la siguiente
+      }
+    }
+
+    if (success) {
       setShowInstagramBtn(true);
       setLoading(false);
       retryCountRef.current = 0;
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
-    } catch (e) {
-      // Si hay error, aún no hay acceso
-       retryCountRef.current += 1;
-       setMessage(`Intento ${retryCountRef.current},         Acceso a internet aún no disponible...`)
-        if (retryCountRef.current < MAX_RETRIES) {
-          setMessage(`Intento ${retryCountRef.current},       Acceso a internet aún no disponible...`);
-          setTimeout(checkInternetAccess, 1000); // Reintenta en 1 segundo
+    } else {
+      retryCountRef.current += 1;
+      setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
+      if (retryCountRef.current < MAX_RETRIES) {
+        setTimeout(checkInternetAccess, 2000);
       } else {
-          setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
+        setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
       }
-      
     }
   };
 
