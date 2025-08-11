@@ -42,11 +42,11 @@ const App = () => {
   }, []);
 
   // Chequea conectividad a internet haciendo fetch a un sitio externo
-  const iosTestUrls = [
-    "http://captive.apple.com/hotspot-detect.html",
-    "https://www.apple.com/library/test/success.html",
-    "https://www.google.com/generate_204"
-  ];
+  // const iosTestUrls = [
+  //   "http://captive.apple.com/hotspot-detect.html",
+  //   "https://www.apple.com/library/test/success.html",
+  //   "https://www.google.com/generate_204"
+  // ];
 
   const checkInternetAccess = async () => {
     const testUrl = isIOS ? iosUrl : androidUrl;
@@ -67,8 +67,8 @@ const App = () => {
     } else {
       retryCountRef.current += 1;
       setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
-      if (retryCountRef.current < (isIOS ? 10 : MAX_RETRIES)) {
-        setTimeout(checkInternetAccess, isIOS ? 1000 : 2000);
+      if (retryCountRef.current < (MAX_RETRIES)) {
+        setTimeout(checkInternetAccess, 2000);
       } else {
         setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
       }
