@@ -83,7 +83,7 @@ const PortalCautive = ({
             {macAddress ? (
               <>
                 <Card.Text>
-                  <h5>{message}</h5>
+                  {message}
                 </Card.Text>
                     <Button
                       className="btn-submit"
@@ -94,7 +94,7 @@ const PortalCautive = ({
                     >
                      NAVEGAR
                     </Button>
-                {loading ? (
+                {loading || !connected || !showInstagramBtn ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (
                   !connected && (
