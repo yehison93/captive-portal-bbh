@@ -41,19 +41,14 @@ const App = () => {
     getMacAddressFromUrl();
   }, []);
 
-  // Chequea conectividad a internet haciendo fetch a un sitio externo
-  // const iosTestUrls = [
-  //   "http://captive.apple.com/hotspot-detect.html",
-  //   "https://www.apple.com/library/test/success.html",
-  //   "https://www.google.com/generate_204"
-  // ];
+
 
   const checkInternetAccess = async () => {
-    const testUrl = isIOS ? iosUrl : androidUrl;
+  
     let success = false;
 
     try {
-      await fetch(testUrl, { mode: "no-cors", cache: "no-store" });
+      await fetch(androidUrl, { mode: "no-cors", cache: "no-store" });
       success = true;
     } catch (e) {
       // Si falla, reintenta
