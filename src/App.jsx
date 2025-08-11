@@ -48,6 +48,7 @@ const App = () => {
       const res = await fetch(androidUrl ,  { mode: "no-cors", cache: "no-store" });
       // Si no lanza error, se asume acceso
       setShowInstagramBtn(true);
+      setLoading(false);
       retryCountRef.current = 0;
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } catch (e) {
@@ -99,7 +100,6 @@ const App = () => {
       if (response.ok) {
         setMessage("Conexión exitosa, verificando acceso a internet...");
         setConnected(true);
-        setLoading(false);
         setTimeout(checkInternetAccess, 500); // Comienza a chequear acceso tras 0.5s
       } else {
         setMessage(
