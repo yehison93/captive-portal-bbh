@@ -49,17 +49,14 @@ const App = () => {
   ];
 
   const checkInternetAccess = async () => {
-    const testUrls = isIOS ? iosTestUrls : [androidUrl];
+    const testUrl = isIOS ? iosUrl : androidUrl;
     let success = false;
 
-    for (let url of testUrls) {
-      try {
-        await fetch(url, { mode: "no-cors", cache: "no-store" });
-        success = true;
-        break;
-      } catch (e) {
-        // Si falla, prueba la siguiente
-      }
+    try {
+      await fetch(testUrl, { mode: "no-cors", cache: "no-store" });
+      success = true;
+    } catch (e) {
+      // Si falla, reintenta
     }
 
     if (success) {
@@ -70,8 +67,8 @@ const App = () => {
     } else {
       retryCountRef.current += 1;
       setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
-      if (retryCountRef.current < MAX_RETRIES) {
-        setTimeout(checkInternetAccess, 2000);
+      if (retryCountRef.current < (isIOS ? 10 : MAX_RETRIES)) {
+        setTimeout(checkInternetAccess, isIOS ? 1000 : 2000);
       } else {
         setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
       }
@@ -113,7 +110,7 @@ const App = () => {
       if (response.ok) {
         setMessage("Conexión exitosa, verificando acceso a internet...");
         setConnected(true);
-        setTimeout(checkInternetAccess, 500); // Comienza a chequear acceso tras 0.5s
+        setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 0.5s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
