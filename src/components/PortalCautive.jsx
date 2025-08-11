@@ -94,7 +94,7 @@ const PortalCautive = ({
                     >
                      NAVEGAR
                     </Button>
-                {loading || !connected || !showInstagramBtn ? (
+                {loading || connected || showInstagramBtn ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (
                   !connected && (
