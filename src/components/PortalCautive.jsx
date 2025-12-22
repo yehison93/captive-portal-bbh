@@ -10,23 +10,34 @@ import spinner from "../assets/logoSpinner.png";
 const images = import.meta.glob(
   "../assets/Fotos_Maremares/*.{png,jpg,jpeg,heic}"
 );
-
+// eslint-disable-next-line react/prop-types
 const PortalCautive = ({
+  // eslint-disable-next-line react/prop-types
   macAddress,
+  // eslint-disable-next-line react/prop-types
   handleConnect,
+  // eslint-disable-next-line react/prop-types
   message,
+  // eslint-disable-next-line react/prop-types
   loading,
+  // eslint-disable-next-line react/prop-types
   connected,
+  // eslint-disable-next-line react/prop-types
   instagramUrl,
+  // eslint-disable-next-line react/prop-types
   showInstagramBtn,
+  // eslint-disable-next-line react/prop-types
   isIOS,
+  // eslint-disable-next-line react/prop-types
   iosUrl,
 }) => {
   const [numItem, setNumItem] = useState(0);
   // Guarda el índice aleatorio para evitar que cambie en cada render
   const [randomIndex] = useState(() => {
     const imagePaths = Object.keys(images);
-    return imagePaths.length > 0 ? Math.floor(Math.random() * imagePaths.length) : 0;
+    return imagePaths.length > 0
+      ? Math.floor(Math.random() * imagePaths.length)
+      : 0;
   });
   const [randomImage, setRandomImage] = useState("");
 
@@ -49,7 +60,6 @@ const PortalCautive = ({
   const incrementItem = () => {
     setNumItem((item) => item + 1);
   };
-
 
   return (
     <Container fluid className="main-container bg-dark gap-1">
@@ -75,25 +85,27 @@ const PortalCautive = ({
           <Card.Body>
             <Card.Title>
               <Stack direction="horizontal" className="justify-content-center">
-                <span className="palmeras" aria-label="Palmera">🌴</span>
+                <span className="palmeras" aria-label="Palmera">
+                  🌴
+                </span>
                 <h1>¡Bienvenido!</h1>
-                <span className="palmeras" aria-label="Palmera">🌴</span>
+                <span className="palmeras" aria-label="Palmera">
+                  🌴
+                </span>
               </Stack>
             </Card.Title>
             {macAddress ? (
               <>
-                <Card.Text>
-                  {message}
-                </Card.Text>
-                    <Button
-                      className="btn-submit"
-                      variant="light"
-                      aria-label="Ir a Instagram"
-                      href={isIOS ? iosUrl : instagramUrl}
-                      hidden={loading || !connected || !showInstagramBtn}
-                    >
-                     NAVEGAR
-                    </Button>
+                <Card.Text>{message}</Card.Text>
+                <Button
+                  className="btn-submit"
+                  variant="light"
+                  aria-label="Ir a Instagram"
+                  href={isIOS ? iosUrl : instagramUrl}
+                  hidden={loading || !connected || !showInstagramBtn}
+                >
+                  NAVEGAR
+                </Button>
                 {loading ? (
                   <Image className="spinner" src={spinner} alt="Cargando..." />
                 ) : (

@@ -15,15 +15,19 @@ const App = () => {
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
   const iosUrl = "http://captive.apple.com/hotspot-detect.html"; // URL para iOS
   const retryCountRef = useRef(0);
+  const isMountedRef = useRef(true);
+  const timeoutRef = useRef(null);
+  const checkAbortControllerRef = useRef(null);
   const MAX_RETRIES = 30; // Número máximo de reintentos para verificar acceso a internet
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
   const [showInstagramBtn, setShowInstagramBtn] = useState(false);
-  
-  // Detecta si el usuario está en iOS
-  const isIOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
+  // Detecta si el usuario está en iOS
+  const isIOS =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const getMacAddressFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -38,21 +42,63 @@ const App = () => {
   };
 
   useEffect(() => {
+    isMountedRef.current = true;
     getMacAddressFromUrl();
+
+    return () => {
+      isMountedRef.current = false;
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      if (checkAbortControllerRef.current) {
+        try {
+          checkAbortControllerRef.current.abort();
+        } catch {
+          void 0;
+        }
+        checkAbortControllerRef.current = null;
+      }
+    };
   }, []);
 
-
-
   const checkInternetAccess = async () => {
-  
     let success = false;
 
-    try {
-      await fetch(androidUrl, { mode: "no-cors", cache: "no-store" });
-      success = true;
-    } catch (e) {
-      // Si falla, reintenta
+    if (typeof navigator !== "undefined" && !navigator.onLine) {
+      success = false;
+    } else {
+      const controller = new AbortController();
+      checkAbortControllerRef.current = controller;
+      const signal = controller.signal;
+      // timeout interno para no esperar indefinidamente
+      const FETCH_TIMEOUT = 3000;
+      let timeoutId;
+      try {
+        timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+        const response = await fetch(androidUrl, {
+          mode: "no-cors",
+          cache: "no-store",
+          signal,
+        });
+        clearTimeout(timeoutId);
+        // Si es una respuesta opaca (no-cors) no podemos leer status, pero la resolución indica que hubo conectividad
+        if (response) {
+          if (response.type === "opaque") {
+            success = true;
+          } else if (response.ok) {
+            success = true;
+          }
+        }
+      } catch {
+        success = false;
+      } finally {
+        if (timeoutId) clearTimeout(timeoutId);
+        checkAbortControllerRef.current = null;
+      }
     }
+
+    if (!isMountedRef.current) return;
 
     if (success) {
       setShowInstagramBtn(true);
@@ -61,11 +107,15 @@ const App = () => {
       setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
     } else {
       retryCountRef.current += 1;
-      setMessage(`Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`);
-      if (retryCountRef.current < (MAX_RETRIES)) {
-        setTimeout(checkInternetAccess, 2000);
+      setMessage(
+        `Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`
+      );
+      if (retryCountRef.current < MAX_RETRIES) {
+        timeoutRef.current = setTimeout(checkInternetAccess, 2000);
       } else {
-        setMessage("Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.");
+        setMessage(
+          "Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte."
+        );
       }
     }
   };
@@ -100,12 +150,27 @@ const App = () => {
         }
       );
 
-      const data = await response.json();
+      let data = null;
+      try {
+        const contentType = response.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          data = await response.json();
+        } else {
+          const text = await response.text();
+          try {
+            data = JSON.parse(text);
+          } catch {
+            data = text;
+          }
+        }
+      } catch {
+        data = null;
+      }
 
       if (response.ok) {
         setMessage("Conexión exitosa, verificando acceso a internet...");
         setConnected(true);
-        setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 0.5s
+        setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 1s
       } else {
         setMessage(
           `Hubo un problema al conectarse, intenta de nuevo más tarde.`
