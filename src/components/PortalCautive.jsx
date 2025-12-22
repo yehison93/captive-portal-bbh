@@ -10,7 +10,6 @@ import spinner from "../assets/logoSpinner.png";
 const images = import.meta.glob(
   "../assets/Fotos_Maremares/*.{png,jpg,jpeg,heic}"
 );
-// eslint-disable-next-line react/prop-types
 const PortalCautive = ({
   // eslint-disable-next-line react/prop-types
   macAddress,
