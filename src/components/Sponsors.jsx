@@ -1,9 +1,13 @@
+// Componente que muestra un carrusel de patrocinadores.
+// Los logos se importan como recursos estáticos y se listan en `sponsorItem`.
 import { Carousel, Figure } from "react-bootstrap";
 import logoTecnonet from "../assets/sponsors/tecnonet.webp";
 import logoBBH from "../assets/sponsors/bbh.png";
 import logoBrisas from "../assets/sponsors/brisas.png";
 import logoShelumSpa from "../assets/sponsors/logoShelumSpa.png";
 
+// Lista de objetos que representan cada patrocinador. Se usa `img` como
+// referencia al recurso importado y `slogan` para mostrar un pie de imagen.
 const sponsorItem = [
   {
     name: "Tecnonet",
@@ -28,16 +32,13 @@ const sponsorItem = [
 ];
 
 const Sponsors = () => {
+  // Mapear `sponsorItem` a elementos del carrusel.
+  // `interval` controla el tiempo de cada slide (en ms).
   return (
     <Carousel slide controls={false} indicators={false}>
       {sponsorItem.map((item, index) => {
         return (
-          <Carousel.Item
-            interval={1000}
-            className="text-center"
-            key={index}
-            // activeIndex={index}
-          >
+          <Carousel.Item interval={1000} className="text-center" key={index}>
             <Figure className="container-figure">
               <Figure.Image
                 className="figure-img"

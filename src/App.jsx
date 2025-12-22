@@ -1,7 +1,14 @@
+// Componente raíz de la aplicación que orquesta la lógica del portal cautivo.
+// Contiene estados compartidos y funciones para iniciar la conexión del
+// dispositivo (a través del backend) y verificar acceso a Internet.
 import { useState, useEffect, useRef } from "react";
 import PortalCautive from "./components/PortalCautive";
 import "./App.css";
 
+// Datos de configuración para la integración con el controlador Unifi.
+// ATENCIÓN: estas credenciales NO deberían estar en el cliente; es un riesgo
+// de seguridad. Idealmente deben moverse al backend o a variables de entorno
+// en el servidor.
 const UnifiData = {
   url: "https://buddhabarbeachhotel.ddns.net:8443",
   siteID: "d41gke5t",
@@ -10,26 +17,42 @@ const UnifiData = {
 };
 
 const App = () => {
+  // Mensaje mostrado en la UI (instrucciones/errores/éxito).
   const [message, setMessage] = useState("Disfrute de nuestra red wifi.");
+
+  // URLs usadas para detectar acceso a Internet o redirigir a Instagram.
   const instagramUrl = `https://www.instagram.com/maremareshotel/?hl=es`;
   const androidUrl = "https://www.google.com/generate_204"; // URL para Android
   const iosUrl = "http://captive.apple.com/hotspot-detect.html"; // URL para iOS
+
+  // Refs y estados auxiliares:
+  // - retryCountRef: número de intentos en la comprobación de Internet.
+  // - isMountedRef: evita actualizaciones de estado tras desmontar el componente.
+  // - timeoutRef: almacena el id de setTimeout para poder limpiarlo.
+  // - checkAbortControllerRef: referencia al AbortController usado en fetch.
   const retryCountRef = useRef(0);
   const isMountedRef = useRef(true);
   const timeoutRef = useRef(null);
   const checkAbortControllerRef = useRef(null);
   const MAX_RETRIES = 30; // Número máximo de reintentos para verificar acceso a internet
+
+  // Estados que controlan la UI del portal cautivo.
   const [macAddress, setMacAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState(false);
   const [showInstagramBtn, setShowInstagramBtn] = useState(false);
 
-  // Detecta si el usuario está en iOS
+  // Detección simple de iOS usando el userAgent. No es perfecta para todos
+  // los casos modernos (p. ej. iPadOS en modo escritorio), pero sirve como
+  // heurística para decidir a qué URL dirigir al usuario.
   const isIOS =
     typeof navigator !== "undefined" &&
     /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const getMacAddressFromUrl = () => {
+    // Extrae el parámetro `id` desde la URL (se espera que el portal cautivo
+    // añada la MAC o identificador en la query string). Si no existe, se
+    // muestra un mensaje de error instructivo al usuario.
     const urlParams = new URLSearchParams(window.location.search);
     const mac = urlParams.get("id");
     if (mac) {
@@ -41,11 +64,14 @@ const App = () => {
     }
   };
 
+  // useEffect de montaje: se extrae la MAC de la URL al montar y se asegura
+  // limpieza al desmontar (limpiar timeouts y abortar fetchs pendientes).
   useEffect(() => {
     isMountedRef.current = true;
     getMacAddressFromUrl();
 
     return () => {
+      // Marca que el componente está desmontado para evitar setState
       isMountedRef.current = false;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -53,6 +79,7 @@ const App = () => {
       }
       if (checkAbortControllerRef.current) {
         try {
+          // Aborta cualquier fetch en curso (si aplica)
           checkAbortControllerRef.current.abort();
         } catch {
           void 0;
