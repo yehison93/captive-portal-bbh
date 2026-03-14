@@ -35,7 +35,7 @@ const App = () => {
   const isMountedRef = useRef(true);
   const timeoutRef = useRef(null);
   const checkAbortControllerRef = useRef(null);
-  const MAX_RETRIES = 10; // Número máximo de reintentos para verificar acceso a internet
+  const MAX_RETRIES = 5; // Número máximo de reintentos para verificar acceso a internet
 
   // Estados que controlan la UI del portal cautivo.
   const [macAddress, setMacAddress] = useState("");
