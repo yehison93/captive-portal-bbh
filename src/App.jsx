@@ -11,6 +11,7 @@ import "./App.css";
 // en el servidor.
 const UnifiData = {
   url: "https://hotelmaremares.duckdns.org:8443",
+  // ID del sitio en Unifi
   siteID: "d41gke5t",
   userName: "API.Admin",
   pw: "123456BBH#",
