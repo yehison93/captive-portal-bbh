@@ -100,7 +100,7 @@ const App = () => {
       checkAbortControllerRef.current = controller;
       const signal = controller.signal;
       // timeout interno para no esperar indefinidamente
-      const FETCH_TIMEOUT = 5000;
+      const FETCH_TIMEOUT = 3000;
       let timeoutId;
       try {
         timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
@@ -141,9 +141,10 @@ const App = () => {
       if (retryCountRef.current < MAX_RETRIES) {
         timeoutRef.current = setTimeout(checkInternetAccess, 1000);
       } else {
-        setMessage(
-          "Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.",
-        );
+        setShowInstagramBtn(true);
+        setLoading(false);
+        retryCountRef.current = 0;
+        setMessage("¡Ya tienes acceso a internet! Haz clic en navegar.");
       }
     }
   };
@@ -200,9 +201,9 @@ const App = () => {
         setConnected(true);
         setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 1s
       } else {
-        setMessage("Conexión exitosa, verificando acceso a internet...");
-        setConnected(true);
-        setTimeout(checkInternetAccess, 1000);
+        setMessage(
+          `Hubo un problema al conectarse, intenta de nuevo más tarde.`,
+        );
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
