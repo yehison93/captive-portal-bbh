@@ -35,7 +35,7 @@ const App = () => {
   const isMountedRef = useRef(true);
   const timeoutRef = useRef(null);
   const checkAbortControllerRef = useRef(null);
-  const MAX_RETRIES = 30; // Número máximo de reintentos para verificar acceso a internet
+  const MAX_RETRIES = 10; // Número máximo de reintentos para verificar acceso a internet
 
   // Estados que controlan la UI del portal cautivo.
   const [macAddress, setMacAddress] = useState("");
@@ -200,9 +200,9 @@ const App = () => {
         setConnected(true);
         setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 1s
       } else {
-        setMessage(
-          `Hubo un problema al conectarse, intenta de nuevo más tarde.`,
-        );
+        setMessage("Conexión exitosa, verificando acceso a internet...");
+        setConnected(true);
+        setTimeout(checkInternetAccess, 1000);
       }
 
       console.log("Respuesta del servidor:", JSON.stringify(data, null, 2));
