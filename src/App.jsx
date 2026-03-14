@@ -10,7 +10,7 @@ import "./App.css";
 // de seguridad. Idealmente deben moverse al backend o a variables de entorno
 // en el servidor.
 const UnifiData = {
-  url: "https://buddhabarbeachhotel.ddns.net:8443",
+  url: "https://hotelmaremares.duckdns.org:8443",
   siteID: "d41gke5t",
   userName: "API.Admin",
   pw: "123456BBH#",
@@ -59,7 +59,7 @@ const App = () => {
       setMacAddress(mac);
     } else {
       setMessage(
-        "Disculpa, pero hubo un error. Desconecta el dispositivo de la red WIFI y vuelve a conectar para continuar. Si el problema persiste solicita ayuda."
+        "Disculpa, pero hubo un error. Desconecta el dispositivo de la red WIFI y vuelve a conectar para continuar. Si el problema persiste solicita ayuda.",
       );
     }
   };
@@ -135,13 +135,13 @@ const App = () => {
     } else {
       retryCountRef.current += 1;
       setMessage(
-        `Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`
+        `Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`,
       );
       if (retryCountRef.current < MAX_RETRIES) {
         timeoutRef.current = setTimeout(checkInternetAccess, 2000);
       } else {
         setMessage(
-          "Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte."
+          "Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.",
         );
       }
     }
@@ -174,7 +174,7 @@ const App = () => {
             pw: UnifiData.pw,
             user: UnifiData.userName,
           }),
-        }
+        },
       );
 
       let data = null;
@@ -200,7 +200,7 @@ const App = () => {
         setTimeout(checkInternetAccess, 1000); // Comienza a chequear acceso tras 1s
       } else {
         setMessage(
-          `Hubo un problema al conectarse, intenta de nuevo más tarde.`
+          `Hubo un problema al conectarse, intenta de nuevo más tarde.`,
         );
       }
 
