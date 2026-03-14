@@ -100,7 +100,7 @@ const App = () => {
       checkAbortControllerRef.current = controller;
       const signal = controller.signal;
       // timeout interno para no esperar indefinidamente
-      const FETCH_TIMEOUT = 3000;
+      const FETCH_TIMEOUT = 5000;
       let timeoutId;
       try {
         timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
@@ -139,7 +139,7 @@ const App = () => {
         `Intento ${retryCountRef.current}, Acceso a internet aún no disponible...`,
       );
       if (retryCountRef.current < MAX_RETRIES) {
-        timeoutRef.current = setTimeout(checkInternetAccess, 2000);
+        timeoutRef.current = setTimeout(checkInternetAccess, 1000);
       } else {
         setMessage(
           "Parece que hay un problema con la conexión. Por favor, intenta de nuevo o contacta al soporte.",
